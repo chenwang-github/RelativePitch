@@ -12,8 +12,8 @@ import AVFoundation
 class ViewController: UIViewController, AVAudioPlayerDelegate {
     
     var key:UIButton!
-    var audioPlayer:AVAudioPlayer!
     var noteList = ["Piano-C3","Piano-D3","Piano-E3","Piano-F3","Piano-G3","Piano-A3","Piano-B3"]
+    var audioPlayers = Array<AVAudioPlayer>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,10 +35,12 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
             //Time consuming task here
             
         }
+        
+        createAudioPlayers()
     }
     
     private func createKeys(index:Int){
-        key = UIButton(frame: CGRect(x: 0, y: index*50+index*10, width: 50, height: 50))
+        key = UIButton(frame: CGRect(x: 100, y: index*50+index*10+50, width: 50, height: 50))
         key.tag = index
         key.backgroundColor = UIColor.white
         key.addTarget(self, action: #selector(keyTapped(sender:)), for: .touchDown)
@@ -51,15 +53,26 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
     }
     
     
+    private func createAudioPlayers(){
+        var count = 0
+        var audioPlayer = AVAudioPlayer()
+        while(count<noteList.count){
+            let soundURL = Bundle.main.url(forResource: noteList[count], withExtension: "wav")
+            do{
+                audioPlayer = try AVAudioPlayer(contentsOf: soundURL!)
+            }
+            catch{
+                print(error)
+            }
+            audioPlayers.append(audioPlayer)
+            count+=1
+        }
+    }
+    
     private func playSound(index:Int){
-        let soundURL = Bundle.main.url(forResource: noteList[index], withExtension: "aiff")
-        do{
-            audioPlayer = try AVAudioPlayer(contentsOf: soundURL!)
-        }
-        catch{
-            print(error)
-        }
-        audioPlayer.play()
+        audioPlayers[index].currentTime = 0
+        audioPlayers[index].play()
+        
     }
     
     
