@@ -12,6 +12,19 @@
 		662EADFB21EE97D800C037A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 662EADF921EE97D800C037A7 /* Main.storyboard */; };
 		662EADFD21EE97D900C037A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 662EADFC21EE97D900C037A7 /* Assets.xcassets */; };
 		662EAE0021EE97D900C037A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 662EADFE21EE97D900C037A7 /* LaunchScreen.storyboard */; };
+		662EAE2121EE9FC100C037A7 /* Piano-C3.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 662EAE2021EE9FC100C037A7 /* Piano-C3.aiff */; };
+		662EAE2D21EEA2D200C037A7 /* Piano-F3.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 662EAE2221EEA2CF00C037A7 /* Piano-F3.aiff */; };
+		662EAE2E21EEA2D200C037A7 /* Piano-Db3.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 662EAE2321EEA2CF00C037A7 /* Piano-Db3.aiff */; };
+		662EAE2F21EEA2D200C037A7 /* Piano-G3.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 662EAE2421EEA2D000C037A7 /* Piano-G3.aiff */; };
+		662EAE3021EEA2D200C037A7 /* Piano-Ab3.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 662EAE2521EEA2D000C037A7 /* Piano-Ab3.aiff */; };
+		662EAE3121EEA2D200C037A7 /* Piano-Bb3.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 662EAE2621EEA2D000C037A7 /* Piano-Bb3.aiff */; };
+		662EAE3221EEA2D200C037A7 /* Piano-A3.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 662EAE2721EEA2D000C037A7 /* Piano-A3.aiff */; };
+		662EAE3321EEA2D200C037A7 /* Piano-E3.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 662EAE2821EEA2D100C037A7 /* Piano-E3.aiff */; };
+		662EAE3421EEA2D200C037A7 /* Piano-Eb3.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 662EAE2921EEA2D100C037A7 /* Piano-Eb3.aiff */; };
+		662EAE3521EEA2D200C037A7 /* Piano-D3.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 662EAE2A21EEA2D100C037A7 /* Piano-D3.aiff */; };
+		662EAE3621EEA2D200C037A7 /* Piano-B3.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 662EAE2B21EEA2D100C037A7 /* Piano-B3.aiff */; };
+		662EAE3721EEA2D200C037A7 /* Piano-Gb3.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 662EAE2C21EEA2D200C037A7 /* Piano-Gb3.aiff */; };
+		662EAE3921EEAB5000C037A7 /* KeyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662EAE3821EEAB5000C037A7 /* KeyButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +35,19 @@
 		662EADFC21EE97D900C037A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		662EADFF21EE97D900C037A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		662EAE0121EE97D900C037A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		662EAE2021EE9FC100C037A7 /* Piano-C3.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = "Piano-C3.aiff"; sourceTree = "<group>"; };
+		662EAE2221EEA2CF00C037A7 /* Piano-F3.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = "Piano-F3.aiff"; sourceTree = "<group>"; };
+		662EAE2321EEA2CF00C037A7 /* Piano-Db3.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = "Piano-Db3.aiff"; sourceTree = "<group>"; };
+		662EAE2421EEA2D000C037A7 /* Piano-G3.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = "Piano-G3.aiff"; sourceTree = "<group>"; };
+		662EAE2521EEA2D000C037A7 /* Piano-Ab3.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = "Piano-Ab3.aiff"; sourceTree = "<group>"; };
+		662EAE2621EEA2D000C037A7 /* Piano-Bb3.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = "Piano-Bb3.aiff"; sourceTree = "<group>"; };
+		662EAE2721EEA2D000C037A7 /* Piano-A3.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = "Piano-A3.aiff"; sourceTree = "<group>"; };
+		662EAE2821EEA2D100C037A7 /* Piano-E3.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = "Piano-E3.aiff"; sourceTree = "<group>"; };
+		662EAE2921EEA2D100C037A7 /* Piano-Eb3.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = "Piano-Eb3.aiff"; sourceTree = "<group>"; };
+		662EAE2A21EEA2D100C037A7 /* Piano-D3.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = "Piano-D3.aiff"; sourceTree = "<group>"; };
+		662EAE2B21EEA2D100C037A7 /* Piano-B3.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = "Piano-B3.aiff"; sourceTree = "<group>"; };
+		662EAE2C21EEA2D200C037A7 /* Piano-Gb3.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = "Piano-Gb3.aiff"; sourceTree = "<group>"; };
+		662EAE3821EEAB5000C037A7 /* KeyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +66,7 @@
 			children = (
 				662EADF421EE97D800C037A7 /* RelativePitch */,
 				662EADF321EE97D800C037A7 /* Products */,
+				662EAE0721EE9D1C00C037A7 /* Piano3 */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,12 +83,32 @@
 			children = (
 				662EADF521EE97D800C037A7 /* AppDelegate.swift */,
 				662EADF721EE97D800C037A7 /* ViewController.swift */,
+				662EAE3821EEAB5000C037A7 /* KeyButton.swift */,
 				662EADF921EE97D800C037A7 /* Main.storyboard */,
 				662EADFC21EE97D900C037A7 /* Assets.xcassets */,
 				662EADFE21EE97D900C037A7 /* LaunchScreen.storyboard */,
 				662EAE0121EE97D900C037A7 /* Info.plist */,
 			);
 			path = RelativePitch;
+			sourceTree = "<group>";
+		};
+		662EAE0721EE9D1C00C037A7 /* Piano3 */ = {
+			isa = PBXGroup;
+			children = (
+				662EAE2021EE9FC100C037A7 /* Piano-C3.aiff */,
+				662EAE2721EEA2D000C037A7 /* Piano-A3.aiff */,
+				662EAE2521EEA2D000C037A7 /* Piano-Ab3.aiff */,
+				662EAE2B21EEA2D100C037A7 /* Piano-B3.aiff */,
+				662EAE2621EEA2D000C037A7 /* Piano-Bb3.aiff */,
+				662EAE2A21EEA2D100C037A7 /* Piano-D3.aiff */,
+				662EAE2321EEA2CF00C037A7 /* Piano-Db3.aiff */,
+				662EAE2821EEA2D100C037A7 /* Piano-E3.aiff */,
+				662EAE2921EEA2D100C037A7 /* Piano-Eb3.aiff */,
+				662EAE2221EEA2CF00C037A7 /* Piano-F3.aiff */,
+				662EAE2421EEA2D000C037A7 /* Piano-G3.aiff */,
+				662EAE2C21EEA2D200C037A7 /* Piano-Gb3.aiff */,
+			);
+			path = Piano3;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -122,8 +169,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				662EAE3421EEA2D200C037A7 /* Piano-Eb3.aiff in Resources */,
+				662EAE3321EEA2D200C037A7 /* Piano-E3.aiff in Resources */,
 				662EAE0021EE97D900C037A7 /* LaunchScreen.storyboard in Resources */,
+				662EAE3221EEA2D200C037A7 /* Piano-A3.aiff in Resources */,
+				662EAE3621EEA2D200C037A7 /* Piano-B3.aiff in Resources */,
+				662EAE2E21EEA2D200C037A7 /* Piano-Db3.aiff in Resources */,
+				662EAE2D21EEA2D200C037A7 /* Piano-F3.aiff in Resources */,
+				662EAE3721EEA2D200C037A7 /* Piano-Gb3.aiff in Resources */,
+				662EAE3121EEA2D200C037A7 /* Piano-Bb3.aiff in Resources */,
+				662EAE2F21EEA2D200C037A7 /* Piano-G3.aiff in Resources */,
+				662EAE3021EEA2D200C037A7 /* Piano-Ab3.aiff in Resources */,
 				662EADFD21EE97D900C037A7 /* Assets.xcassets in Resources */,
+				662EAE3521EEA2D200C037A7 /* Piano-D3.aiff in Resources */,
+				662EAE2121EE9FC100C037A7 /* Piano-C3.aiff in Resources */,
 				662EADFB21EE97D800C037A7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -135,6 +194,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				662EAE3921EEAB5000C037A7 /* KeyButton.swift in Sources */,
 				662EADF821EE97D800C037A7 /* ViewController.swift in Sources */,
 				662EADF621EE97D800C037A7 /* AppDelegate.swift in Sources */,
 			);

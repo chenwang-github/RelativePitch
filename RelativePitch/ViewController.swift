@@ -7,14 +7,74 @@
 //
 
 import UIKit
+import AVFoundation
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, AVAudioPlayerDelegate {
+    
+    var key:UIButton!
+    var audioPlayer:AVAudioPlayer!
+    var noteList = ["Piano-C3","Piano-D3","Piano-E3","Piano-F3","Piano-G3","Piano-A3","Piano-B3"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+
+        //set backgroundColor
+        self.view.backgroundColor = UIColor(red: 0.92, green: 0.34, blue: 0.34, alpha: 1)
+        
+        //try adding keys:
+        
+        var index = 0
+        while(index<noteList.count){
+            createKeys(index: index)
+            index+=1
+        }
+
+        let dispatchQueue = DispatchQueue(label: "QueueIdentification", qos: .background)
+        dispatchQueue.async{
+            //Time consuming task here
+            
+        }
+    }
+    
+    private func createKeys(index:Int){
+        key = UIButton(frame: CGRect(x: 0, y: index*50+index*10, width: 50, height: 50))
+        key.tag = index
+        key.backgroundColor = UIColor.white
+        key.addTarget(self, action: #selector(keyTapped(sender:)), for: .touchDown)
+        self.view.addSubview(key)
     }
 
+    
+    @objc private func keyTapped(sender:UIButton){
+        playSound(index: sender.tag)
+    }
+    
+    
+    private func playSound(index:Int){
+        let soundURL = Bundle.main.url(forResource: noteList[index], withExtension: "aiff")
+        do{
+            audioPlayer = try AVAudioPlayer(contentsOf: soundURL!)
+        }
+        catch{
+            print(error)
+        }
+        audioPlayer.play()
+    }
+    
+    
+    private func PlayRandom(){
+        let index = Int.random(in: 0 ..< noteList.count)
+        playSound(index: index)
+    }
 
+    
+    
+    private func backgroundPlay(){
+        sleep(2)
+        PlayRandom()
+        
+    }
+    
 }
 
