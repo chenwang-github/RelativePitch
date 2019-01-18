@@ -37,19 +37,31 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
         }
         
         createAudioPlayers()
+
     }
     
     private func createKeys(index:Int){
         key = UIButton(frame: CGRect(x: 100, y: index*50+index*10+50, width: 50, height: 50))
-        key.tag = index
+        key.tag = index+10000
         key.backgroundColor = UIColor.white
         key.addTarget(self, action: #selector(keyTapped(sender:)), for: .touchDown)
+        key.addTarget(self, action: #selector(keyReleased(sender:)), for: .touchUpInside)
         self.view.addSubview(key)
     }
 
+    @objc private func keyReleased(sender:KeyButton){
+        print("lifted")
+        while(audioPlayers[sender.tag-10000].volume>0){
+            audioPlayers[sender.tag-10000].volume = audioPlayers[sender.tag-10000].volume - 0.05
+            usleep(10000)
+            //print(audioPlayers[sender.tag-10000].volume)
+        }
+    }
     
     @objc private func keyTapped(sender:UIButton){
-        playSound(index: sender.tag)
+        playSound(index: sender.tag-10000)
+        audioPlayers[sender.tag-10000].volume = 1
+        print("touch down")
     }
     
     
