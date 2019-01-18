@@ -9,38 +9,47 @@
 import UIKit
 import AVFoundation
 
-class ViewController: UIViewController, AVAudioPlayerDelegate {
+class ViewController: UIViewController{
     
     var key:UIButton!
+    //noteList stores all the notes
     var noteList = ["Piano-C3","Piano-D3","Piano-E3","Piano-F3","Piano-G3","Piano-A3","Piano-B3"]
+    
+    //noteList stores all the audioPlayers
     var audioPlayers = Array<AVAudioPlayer>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
-        //set backgroundColor
+        //edit view for controller
         self.view.backgroundColor = UIColor(red: 0.92, green: 0.34, blue: 0.34, alpha: 1)
         
-        //try adding keys:
+        //create keys and audio players:
+        createKeys()
+        createAudioPlayers()
         
-        var index = 0
-        while(index<noteList.count){
-            createKeys(index: index)
-            index+=1
-        }
-
+        
         let dispatchQueue = DispatchQueue(label: "QueueIdentification", qos: .background)
         dispatchQueue.async{
             //Time consuming task here
             
         }
-        
-        createAudioPlayers()
 
     }
     
-    private func createKeys(index:Int){
+    
+    
+    //MARK: - Buttons(Key) Setup
+    private func createKeys(){
+        var index = 0
+        while(index<noteList.count){
+            createKey(index: index)
+            index+=1
+        }
+    }
+    
+    private func createKey(index:Int){
         key = UIButton(frame: CGRect(x: 100, y: index*50+index*10+50, width: 50, height: 50))
         key.tag = index+10000
         key.backgroundColor = UIColor.white
@@ -65,6 +74,10 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
     }
     
     
+    
+    
+    //Mark: - AVAudioPlayer Setup
+    
     private func createAudioPlayers(){
         var count = 0
         var audioPlayer = AVAudioPlayer()
@@ -87,19 +100,15 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
         
     }
     
-    
-    private func PlayRandom(){
-        let index = Int.random(in: 0 ..< noteList.count)
-        playSound(index: index)
-    }
-
-    
-    
-    private func backgroundPlay(){
-        sleep(2)
-        PlayRandom()
-        
-    }
+//    private func PlayRandom(){
+//        let index = Int.random(in: 0 ..< noteList.count)
+//        playSound(index: index)
+//    }
+//
+//    private func backgroundPlay(){
+//        sleep(2)
+//        PlayRandom()
+//    }
     
 }
 
