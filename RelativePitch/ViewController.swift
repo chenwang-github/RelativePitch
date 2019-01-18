@@ -12,11 +12,9 @@ import AVFoundation
 class ViewController: UIViewController{
     
     var key:UIButton!
-    //noteList stores all the notes
-    var noteList = ["Piano-C3","Piano-D3","Piano-E3","Piano-F3","Piano-G3","Piano-A3","Piano-B3"]
     
-    //noteList stores all the audioPlayers
-    var audioPlayers = Array<AVAudioPlayer>()
+    let musicBox = MusicBox.shareInstance
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +25,6 @@ class ViewController: UIViewController{
         
         //create keys and audio players:
         createKeys()
-        createAudioPlayers()
         
         
         let dispatchQueue = DispatchQueue(label: "QueueIdentification", qos: .background)
@@ -43,7 +40,7 @@ class ViewController: UIViewController{
     //MARK: - Buttons(Key) Setup
     private func createKeys(){
         var index = 0
-        while(index<noteList.count){
+        while(index<musicBox.noteList.count){
             createKey(index: index)
             index+=1
         }
@@ -60,55 +57,17 @@ class ViewController: UIViewController{
 
     @objc private func keyReleased(sender:KeyButton){
         print("lifted")
-        while(audioPlayers[sender.tag-10000].volume>0){
-            audioPlayers[sender.tag-10000].volume = audioPlayers[sender.tag-10000].volume - 0.05
+        while(musicBox.audioPlayers[sender.tag-10000].volume>0){
+            musicBox.audioPlayers[sender.tag-10000].volume = musicBox.audioPlayers[sender.tag-10000].volume - 0.05
             usleep(10000)
             //print(audioPlayers[sender.tag-10000].volume)
         }
     }
     
     @objc private func keyTapped(sender:UIButton){
-        playSound(index: sender.tag-10000)
-        audioPlayers[sender.tag-10000].volume = 1
+        musicBox.playSound(index: sender.tag-10000)
+        musicBox.audioPlayers[sender.tag-10000].volume = 1
         print("touch down")
     }
-    
-    
-    
-    
-    //Mark: - AVAudioPlayer Setup
-    
-    private func createAudioPlayers(){
-        var count = 0
-        var audioPlayer = AVAudioPlayer()
-        while(count<noteList.count){
-            let soundURL = Bundle.main.url(forResource: noteList[count], withExtension: "wav")
-            do{
-                audioPlayer = try AVAudioPlayer(contentsOf: soundURL!)
-            }
-            catch{
-                print(error)
-            }
-            audioPlayers.append(audioPlayer)
-            count+=1
-        }
-    }
-    
-    private func playSound(index:Int){
-        audioPlayers[index].currentTime = 0
-        audioPlayers[index].play()
-        
-    }
-    
-//    private func PlayRandom(){
-//        let index = Int.random(in: 0 ..< noteList.count)
-//        playSound(index: index)
-//    }
-//
-//    private func backgroundPlay(){
-//        sleep(2)
-//        PlayRandom()
-//    }
-    
 }
 
