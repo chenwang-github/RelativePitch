@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A63DBDA6124759CD9D9D6CD /* Pods_RelativePitch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E682D6571959BE94A1353198 /* Pods_RelativePitch.framework */; };
 		662EADF621EE97D800C037A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662EADF521EE97D800C037A7 /* AppDelegate.swift */; };
 		662EADF821EE97D800C037A7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662EADF721EE97D800C037A7 /* ViewController.swift */; };
 		662EADFB21EE97D800C037A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 662EADF921EE97D800C037A7 /* Main.storyboard */; };
@@ -26,6 +27,8 @@
 		662EAE3721EEA2D200C037A7 /* Piano-Gb3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 662EAE2C21EEA2D200C037A7 /* Piano-Gb3.wav */; };
 		662EAE3921EEAB5000C037A7 /* KeyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662EAE3821EEAB5000C037A7 /* KeyButton.swift */; };
 		662EAE3D21F156A900C037A7 /* MusicBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662EAE3C21F156A900C037A7 /* MusicBox.swift */; };
+		66E3D90721F56F1C00DF342B /* MenuButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E3D90621F56F1C00DF342B /* MenuButtonView.swift */; };
+		66E3D90921F5963000DF342B /* KeyButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E3D90821F5963000DF342B /* KeyButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +53,11 @@
 		662EAE2C21EEA2D200C037A7 /* Piano-Gb3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Piano-Gb3.wav"; sourceTree = "<group>"; };
 		662EAE3821EEAB5000C037A7 /* KeyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyButton.swift; sourceTree = "<group>"; };
 		662EAE3C21F156A900C037A7 /* MusicBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicBox.swift; sourceTree = "<group>"; };
+		66E3D90621F56F1C00DF342B /* MenuButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButtonView.swift; sourceTree = "<group>"; };
+		66E3D90821F5963000DF342B /* KeyButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyButtonView.swift; sourceTree = "<group>"; };
+		6A33A02FB9377D13A242DF65 /* Pods-RelativePitch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RelativePitch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RelativePitch/Pods-RelativePitch.debug.xcconfig"; sourceTree = "<group>"; };
+		6D405BA93DBCFA272D6120F8 /* Pods-RelativePitch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RelativePitch.release.xcconfig"; path = "Pods/Target Support Files/Pods-RelativePitch/Pods-RelativePitch.release.xcconfig"; sourceTree = "<group>"; };
+		E682D6571959BE94A1353198 /* Pods_RelativePitch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RelativePitch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A63DBDA6124759CD9D9D6CD /* Pods_RelativePitch.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,8 +76,6 @@
 			isa = PBXGroup;
 			children = (
 				662EADF421EE97D800C037A7 /* RelativePitch */,
-				662EADF321EE97D800C037A7 /* Products */,
-				662EAE0721EE9D1C00C037A7 /* Piano3 */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,19 +85,19 @@
 				662EADF221EE97D800C037A7 /* RelativePitch.app */,
 			);
 			name = Products;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 		662EADF421EE97D800C037A7 /* RelativePitch */ = {
 			isa = PBXGroup;
 			children = (
-				662EADF521EE97D800C037A7 /* AppDelegate.swift */,
-				662EADF721EE97D800C037A7 /* ViewController.swift */,
-				662EAE3821EEAB5000C037A7 /* KeyButton.swift */,
-				662EADF921EE97D800C037A7 /* Main.storyboard */,
-				662EADFC21EE97D900C037A7 /* Assets.xcassets */,
-				662EADFE21EE97D900C037A7 /* LaunchScreen.storyboard */,
 				662EAE0121EE97D900C037A7 /* Info.plist */,
-				662EAE3C21F156A900C037A7 /* MusicBox.swift */,
+				662EADF521EE97D800C037A7 /* AppDelegate.swift */,
+				662EAE3821EEAB5000C037A7 /* KeyButton.swift */,
+				66E3D90D21F5969F00DF342B /* Controllers */,
+				66E3D90B21F5966900DF342B /* Models */,
+				66E3D90A21F5964E00DF342B /* Views */,
+				66E3D90C21F5968400DF342B /* Support files */,
 			);
 			path = RelativePitch;
 			sourceTree = "<group>";
@@ -114,6 +121,64 @@
 			path = Piano3;
 			sourceTree = "<group>";
 		};
+		66E3D90A21F5964E00DF342B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				66E3D90621F56F1C00DF342B /* MenuButtonView.swift */,
+				66E3D90821F5963000DF342B /* KeyButtonView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		66E3D90B21F5966900DF342B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				662EAE3C21F156A900C037A7 /* MusicBox.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		66E3D90C21F5968400DF342B /* Support files */ = {
+			isa = PBXGroup;
+			children = (
+				662EADF321EE97D800C037A7 /* Products */,
+				662EAE0721EE9D1C00C037A7 /* Piano3 */,
+				8C1BE4EFBCE5D065AEC807B6 /* Pods */,
+				8F622479CAAF2EC852B55C0D /* Frameworks */,
+				662EADF921EE97D800C037A7 /* Main.storyboard */,
+				662EADFC21EE97D900C037A7 /* Assets.xcassets */,
+				662EADFE21EE97D900C037A7 /* LaunchScreen.storyboard */,
+			);
+			path = "Support files";
+			sourceTree = "<group>";
+		};
+		66E3D90D21F5969F00DF342B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				662EADF721EE97D800C037A7 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		8C1BE4EFBCE5D065AEC807B6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6A33A02FB9377D13A242DF65 /* Pods-RelativePitch.debug.xcconfig */,
+				6D405BA93DBCFA272D6120F8 /* Pods-RelativePitch.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		8F622479CAAF2EC852B55C0D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E682D6571959BE94A1353198 /* Pods_RelativePitch.framework */,
+			);
+			name = Frameworks;
+			path = ../..;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -121,9 +186,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 662EAE0421EE97D900C037A7 /* Build configuration list for PBXNativeTarget "RelativePitch" */;
 			buildPhases = (
+				A4A143E8132E490D9F2440D0 /* [CP] Check Pods Manifest.lock */,
 				662EADEE21EE97D800C037A7 /* Sources */,
 				662EADEF21EE97D800C037A7 /* Frameworks */,
 				662EADF021EE97D800C037A7 /* Resources */,
+				F6E171AA9531F6594C21408A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -192,6 +259,47 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A4A143E8132E490D9F2440D0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RelativePitch-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F6E171AA9531F6594C21408A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-RelativePitch/Pods-RelativePitch-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/CircleTimer/AppusCircleTimer.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppusCircleTimer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RelativePitch/Pods-RelativePitch-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		662EADEE21EE97D800C037A7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -199,6 +307,8 @@
 			files = (
 				662EAE3921EEAB5000C037A7 /* KeyButton.swift in Sources */,
 				662EADF821EE97D800C037A7 /* ViewController.swift in Sources */,
+				66E3D90921F5963000DF342B /* KeyButtonView.swift in Sources */,
+				66E3D90721F56F1C00DF342B /* MenuButtonView.swift in Sources */,
 				662EADF621EE97D800C037A7 /* AppDelegate.swift in Sources */,
 				662EAE3D21F156A900C037A7 /* MusicBox.swift in Sources */,
 			);
@@ -344,6 +454,7 @@
 		};
 		662EAE0521EE97D900C037A7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6A33A02FB9377D13A242DF65 /* Pods-RelativePitch.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -362,6 +473,7 @@
 		};
 		662EAE0621EE97D900C037A7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6D405BA93DBCFA272D6120F8 /* Pods-RelativePitch.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
