@@ -29,6 +29,9 @@
 		662EAE3D21F156A900C037A7 /* MusicBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662EAE3C21F156A900C037A7 /* MusicBox.swift */; };
 		66E3D90721F56F1C00DF342B /* MenuButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E3D90621F56F1C00DF342B /* MenuButtonView.swift */; };
 		66E3D90921F5963000DF342B /* KeyButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E3D90821F5963000DF342B /* KeyButtonView.swift */; };
+		66E3D90F21F691F000DF342B /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E3D90E21F691F000DF342B /* TimerView.swift */; };
+		66E3D91121F6967C00DF342B /* CommonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E3D91021F6967C00DF342B /* CommonLabel.swift */; };
+		66E3D91321F69DE400DF342B /* SmallKeyButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E3D91221F69DE400DF342B /* SmallKeyButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +58,9 @@
 		662EAE3C21F156A900C037A7 /* MusicBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicBox.swift; sourceTree = "<group>"; };
 		66E3D90621F56F1C00DF342B /* MenuButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButtonView.swift; sourceTree = "<group>"; };
 		66E3D90821F5963000DF342B /* KeyButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyButtonView.swift; sourceTree = "<group>"; };
+		66E3D90E21F691F000DF342B /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		66E3D91021F6967C00DF342B /* CommonLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonLabel.swift; sourceTree = "<group>"; };
+		66E3D91221F69DE400DF342B /* SmallKeyButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallKeyButtonView.swift; sourceTree = "<group>"; };
 		6A33A02FB9377D13A242DF65 /* Pods-RelativePitch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RelativePitch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RelativePitch/Pods-RelativePitch.debug.xcconfig"; sourceTree = "<group>"; };
 		6D405BA93DBCFA272D6120F8 /* Pods-RelativePitch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RelativePitch.release.xcconfig"; path = "Pods/Target Support Files/Pods-RelativePitch/Pods-RelativePitch.release.xcconfig"; sourceTree = "<group>"; };
 		E682D6571959BE94A1353198 /* Pods_RelativePitch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RelativePitch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,6 +132,9 @@
 			children = (
 				66E3D90621F56F1C00DF342B /* MenuButtonView.swift */,
 				66E3D90821F5963000DF342B /* KeyButtonView.swift */,
+				66E3D90E21F691F000DF342B /* TimerView.swift */,
+				66E3D91021F6967C00DF342B /* CommonLabel.swift */,
+				66E3D91221F69DE400DF342B /* SmallKeyButtonView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -305,10 +314,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66E3D90F21F691F000DF342B /* TimerView.swift in Sources */,
 				662EAE3921EEAB5000C037A7 /* KeyButton.swift in Sources */,
 				662EADF821EE97D800C037A7 /* ViewController.swift in Sources */,
 				66E3D90921F5963000DF342B /* KeyButtonView.swift in Sources */,
 				66E3D90721F56F1C00DF342B /* MenuButtonView.swift in Sources */,
+				66E3D91321F69DE400DF342B /* SmallKeyButtonView.swift in Sources */,
+				66E3D91121F6967C00DF342B /* CommonLabel.swift in Sources */,
 				662EADF621EE97D800C037A7 /* AppDelegate.swift in Sources */,
 				662EAE3D21F156A900C037A7 /* MusicBox.swift in Sources */,
 			);

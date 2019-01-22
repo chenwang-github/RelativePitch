@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 import AppusCircleTimer
 
-class ViewController: UIViewController, AppusCircleTimerDelegate{
+class ViewController: UIViewController{
     
     var key:UIButton!
     
@@ -18,56 +18,42 @@ class ViewController: UIViewController, AppusCircleTimerDelegate{
     var btn:UIButton!
     var btn2:UIButton!
     var btn3:UIButton!
+    var buttons = Array<KeyButtonView>()
+    let keyWidth = (UIScreen.main.bounds.width+5)/7
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        //setUp timerView
+        let timerView = TimerView(frame: CGRect(x: 110, y: 150, width: 162, height: 162))
+        self.view.addSubview(timerView)
         
-        let timer2 = AppusCircleTimer()
-        timer2.delegate = self
-        
-        timer2.frame = CGRect(x: 107, y: 107, width: 155, height: 155)
-        timer2.totalTime = 5
-        timer2.isBackwards = true
-        timer2.backgroundColor = UIColor(red: 0.92, green: 0.34, blue: 0.34, alpha: 1)
-        timer2.inactiveColor = UIColor(red: 0.92, green: 0.34, blue: 0.34, alpha: 1)
-        timer2.pauseColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25)
-        timer2.isActive = false
-        timer2.thickness = 10
-        self.view.addSubview(timer2)
-        
-        
-        let timer = AppusCircleTimer()
-        timer.delegate = self
-        
-        timer.frame = CGRect(x: 100, y: 100, width: 155, height: 155)
-        timer.totalTime = 5
-        timer.isBackwards = true
-        timer.backgroundColor = UIColor(red: 0.92, green: 0.34, blue: 0.34, alpha: 1)
-        timer.inactiveColor = UIColor(red: 0.92, green: 0.34, blue: 0.34, alpha: 1)
-        timer.pauseColor = .white
-        timer.isActive = false
-        timer.thickness = 10
-        self.view.addSubview(timer)
+        for i in 1...7{
+            let keyButtonView = KeyButtonView(frame: CGRect(x: Double(i-1)*Double(keyWidth), y: Double(UIScreen.main.bounds.height), width: Double(keyWidth), height: 230.0))
+            buttons.append(keyButtonView)
+            self.view.addSubview(keyButtonView)
+        }
         
         
         
-        timer.start()
-        timer2.start()
         
-        
-        btn = UIButton(frame: CGRect(x: 0, y: UIScreen.main.bounds.height, width: 50, height: 200))
-        btn.backgroundColor = .white
-        self.view.addSubview(btn)
-        btn2 = UIButton(frame: CGRect(x: 50, y: UIScreen.main.bounds.height, width: 50, height: 200))
-        btn2.backgroundColor = .white
-        self.view.addSubview(btn2)
-        btn3 = UIButton(frame: CGRect(x: 100, y: UIScreen.main.bounds.height, width: 50, height: 200))
-        btn3.backgroundColor = .white
-        self.view.addSubview(btn3)
-        
+//
+//
+//        btn = UIButton(frame: CGRect(x: 0, y: UIScreen.main.bounds.height, width: 50, height: 200))
+//        btn.backgroundColor = .white
+//        self.view.addSubview(btn)
+//        btn2 = UIButton(frame: CGRect(x: 50, y: UIScreen.main.bounds.height, width: 50, height: 200))
+//        btn2.backgroundColor = .white
+//        self.view.addSubview(btn2)
+//        btn3 = UIButton(frame: CGRect(x: 100, y: UIScreen.main.bounds.height, width: 50, height: 200))
+//        btn3.backgroundColor = .white
+//        self.view.addSubview(btn3)
+//
         popKey()
+        
+        
         
         
         
@@ -78,6 +64,7 @@ class ViewController: UIViewController, AppusCircleTimerDelegate{
         //createKeys()
         
 //        let menuButtonView = MenuButtonView(frame: CGRect(x: 100, y: 100, width: 182.82, height: 55))
+//        menuButtonView.label.text = "Resume"
 //        self.view.addSubview(menuButtonView)
         
 //        let dispatchQueue = DispatchQueue(label: "QueueIdentification", qos: .background)
@@ -85,27 +72,22 @@ class ViewController: UIViewController, AppusCircleTimerDelegate{
 //            //Time consuming task here
 //
 //        }
+        
+        
+        
     
     }
     
-    
     func popKey(){
-        UIView.animate(withDuration: 0.5) {
-            self.btn.frame =  CGRect(x: 0, y: UIScreen.main.bounds.height-200, width: 50, height: 200)
-        }
-        UIView.animate(withDuration: 0.7) {
-            self.btn2.frame =  CGRect(x: 50, y: UIScreen.main.bounds.height-200, width: 50, height: 200)
-        }
-        UIView.animate(withDuration: 0.9) {
-            self.btn3.frame =  CGRect(x: 100, y: UIScreen.main.bounds.height-200, width: 50, height: 200)
+        var i = 0
+        while( i < buttons.count){
+            UIView.animate(withDuration: 0.5+(0.2*Double(i))) {
+                self.buttons[i].frame.origin.y = UIScreen.main.bounds.height-200
+            }
+            i+=1
         }
     }
    
-    func circleCounterTimeDidExpire(circleTimer: AppusCircleTimer) {
-        circleTimer.reset()
-        circleTimer.isActive = false
-        circleTimer.start()
-    }
     
     
     

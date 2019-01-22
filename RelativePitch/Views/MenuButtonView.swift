@@ -11,7 +11,7 @@ import UIKit
 class MenuButtonView: UIView {
     
     var button:UIButton!
-    var label:UILabel!
+    var label:CommonLabel!
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -42,11 +42,7 @@ class MenuButtonView: UIView {
         
         
         //for label
-        label = UILabel(frame: button.frame)
-        label.backgroundColor = .white
-        label.textColor = UIColor(red: 0.92, green: 0.34, blue: 0.34, alpha: 1)
-        label.font = UIFont(name: "PingFangSC-Light", size: 24)
-        label.textAlignment = .center
+        label = CommonLabel(frame: button.frame)
         label.text = "Resume"
     
       
