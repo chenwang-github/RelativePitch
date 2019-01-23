@@ -19,6 +19,7 @@ class ViewController: UIViewController{
     var btn2:UIButton!
     var btn3:UIButton!
     var buttons = Array<KeyButtonView>()
+    var smallButtons = Array<KeyButtonView>()
     let keyWidth = (UIScreen.main.bounds.width+5)/7
     
 
@@ -32,8 +33,22 @@ class ViewController: UIViewController{
         
         for i in 1...7{
             let keyButtonView = KeyButtonView(frame: CGRect(x: Double(i-1)*Double(keyWidth), y: Double(UIScreen.main.bounds.height), width: Double(keyWidth), height: 230.0))
+            keyButtonView.createLargeKey()
             buttons.append(keyButtonView)
             self.view.addSubview(keyButtonView)
+        }
+        
+        for i in 1...7{
+            if (i == 2 || i == 3 || i == 5 || i == 6 || i == 7){
+                print(i)
+                let smallKeyButtonView = KeyButtonView(frame: CGRect(x: Double(i-1)*Double(keyWidth)-Double(keyWidth*0.3)-5, y: Double(UIScreen.main.bounds.height), width: Double(keyWidth*0.7), height: 230.0*0.5))
+                smallKeyButtonView.createSmallKey()
+                smallKeyButtonView.button.layer.cornerRadius = 18
+                smallKeyButtonView.button.layer.borderWidth = 2
+                smallKeyButtonView.button.layer.borderColor = UIColor(red: 0.92, green: 0.34, blue: 0.34, alpha: 1).cgColor
+                smallButtons.append(smallKeyButtonView)
+                self.view.addSubview(smallKeyButtonView)
+            }
         }
         
         
@@ -75,7 +90,6 @@ class ViewController: UIViewController{
         
         
         
-    
     }
     
     func popKey(){
@@ -86,6 +100,14 @@ class ViewController: UIViewController{
             }
             i+=1
         }
+        var j = 0
+        while( j < smallButtons.count){
+            UIView.animate(withDuration: 0.5+(0.2*Double(i+j))) {
+                self.smallButtons[j].frame.origin.y = UIScreen.main.bounds.height-80
+            }
+            j+=1
+        }
+        
     }
    
     
