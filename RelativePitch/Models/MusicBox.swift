@@ -18,6 +18,8 @@ class MusicBox{
     //noteList stores all the notes
     var noteList = ["Piano-C3","Piano-D3","Piano-E3","Piano-F3","Piano-G3","Piano-A3","Piano-B3"]
     
+    var lastNote:String!
+    
     //noteList stores all the audioPlayers
     var audioPlayers = Array<AVAudioPlayer>()
     
@@ -48,19 +50,24 @@ class MusicBox{
     }
     
     public func playSound(index:Int){
+        audioPlayers[index].volume = 1
         audioPlayers[index].currentTime = 0
         audioPlayers[index].play()
         
     }
     
     
-    //    private func PlayRandom(){
-    //        let index = Int.random(in: 0 ..< noteList.count)
-    //        playSound(index: index)
-    //    }
-    //
-    //    private func backgroundPlay(){
-    //        sleep(2)
-    //        PlayRandom()
-    //    }
+    public func PlayRandom(){
+        
+        let index = Int.random(in: 0 ..< noteList.count)
+        playSound(index: index)
+        lastNote = noteList[index]
+        print(lastNote!)
+    }
+
+//    public func backgroundPlay(gap:UInt32){
+//        sleep(gap)
+//        PlayRandom()
+//        print(lastNote!)
+//    }
 }

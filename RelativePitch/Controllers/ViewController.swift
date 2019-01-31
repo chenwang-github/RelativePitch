@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AVFoundation
 import AppusCircleTimer
 
 class ViewController: UIViewController{
@@ -15,6 +14,7 @@ class ViewController: UIViewController{
     var key:UIButton!
     
     let musicBox = MusicBox.shareInstance
+    
     var btn:UIButton!
     var btn2:UIButton!
     var btn3:UIButton!
@@ -31,25 +31,8 @@ class ViewController: UIViewController{
         let timerView = TimerView(frame: CGRect(x: 110, y: 150, width: 162, height: 162))
         self.view.addSubview(timerView)
         
-        for i in 1...7{
-            let keyButtonView = KeyButtonView(frame: CGRect(x: Double(i-1)*Double(keyWidth), y: Double(UIScreen.main.bounds.height), width: Double(keyWidth), height: 230.0))
-            keyButtonView.createLargeKey()
-            buttons.append(keyButtonView)
-            self.view.addSubview(keyButtonView)
-        }
-        
-        for i in 1...7{
-            if (i == 2 || i == 3 || i == 5 || i == 6 || i == 7){
-                print(i)
-                let smallKeyButtonView = KeyButtonView(frame: CGRect(x: Double(i-1)*Double(keyWidth)-Double(keyWidth*0.3)-5, y: Double(UIScreen.main.bounds.height), width: Double(keyWidth*0.7), height: 230.0*0.5))
-                smallKeyButtonView.createSmallKey()
-                smallKeyButtonView.button.layer.cornerRadius = 18
-                smallKeyButtonView.button.layer.borderWidth = 2
-                smallKeyButtonView.button.layer.borderColor = UIColor(red: 0.92, green: 0.34, blue: 0.34, alpha: 1).cgColor
-                smallButtons.append(smallKeyButtonView)
-                self.view.addSubview(smallKeyButtonView)
-            }
-        }
+        self.createKey()
+
         
         
         
@@ -85,7 +68,9 @@ class ViewController: UIViewController{
 //        let dispatchQueue = DispatchQueue(label: "QueueIdentification", qos: .background)
 //        dispatchQueue.async{
 //            //Time consuming task here
-//
+//            while(true){
+//                self.musicBox.backgroundPlay(gap: 3)
+//            }
 //        }
         
         
@@ -114,37 +99,47 @@ class ViewController: UIViewController{
     
     
     //MARK: - Buttons(Key) Setup
-    private func createKeys(){
-        var index = 0
-        while(index<musicBox.noteList.count){
-            createKey(index: index)
-            index+=1
-        }
-    }
+
     
-    private func createKey(index:Int){
-        key = UIButton(frame: CGRect(x: 100, y: index*50+index*10+50, width: 50, height: 50))
-        key.tag = index+10000
-        key.backgroundColor = UIColor.white
-        key.addTarget(self, action: #selector(keyTapped(sender:)), for: .touchDown)
-        key.addTarget(self, action: #selector(keyReleased(sender:)), for: .touchUpInside)
-        self.view.addSubview(key)
+    private func createKey(){
+        
+        for i in 1...7{
+            let keyView = KeyButtonView(frame: CGRect(x: Double(i-1)*Double(keyWidth), y: Double(UIScreen.main.bounds.height), width: Double(keyWidth), height: 230.0))
+            keyView.createLargeKey()
+            buttons.append(keyView)
+            self.view.addSubview(keyView)
+            keyView.button.tag = i+10000-1
+            self.view.addSubview(keyView)
+        }
+        
+        for i in 1...7{
+            if (i == 2 || i == 3 || i == 5 || i == 6 || i == 7){
+                let keyView = KeyButtonView(frame: CGRect(x: Double(i-1)*Double(keyWidth)-Double(keyWidth*0.3)-5, y: Double(UIScreen.main.bounds.height), width: Double(keyWidth*0.7), height: 230.0*0.5))
+                keyView.createSmallKey()
+                keyView.button.layer.cornerRadius = 18
+                keyView.button.layer.borderWidth = 2
+                keyView.button.layer.borderColor = UIColor(red: 0.92, green: 0.34, blue: 0.34, alpha: 1).cgColor
+                smallButtons.append(keyView)
+                self.view.addSubview(keyView)
+            }
+        }
+        
     }
 
-    @objc private func keyReleased(sender:KeyButton){
-        print("lifted")
-        while(musicBox.audioPlayers[sender.tag-10000].volume>0){
-            musicBox.audioPlayers[sender.tag-10000].volume = musicBox.audioPlayers[sender.tag-10000].volume - 0.05
-            usleep(10000)
-            //print(audioPlayers[sender.tag-10000].volume)
-        }
-    }
-    
-    @objc private func keyTapped(sender:UIButton){
-        musicBox.playSound(index: sender.tag-10000)
-        musicBox.audioPlayers[sender.tag-10000].volume = 1
-        print("touch down")
-    }
+//    @objc private func keyReleased(sender:KeyButton){
+//        print("lifted")
+//        while(musicBox.audioPlayers[sender.tag-10000].volume>0){
+//            musicBox.audioPlayers[sender.tag-10000].volume = musicBox.audioPlayers[sender.tag-10000].volume - 0.05
+//            usleep(10000)
+//            //print(audioPlayers[sender.tag-10000].volume)
+//        }
+//    }
+//
+//    @objc private func keyTapped(sender:UIButton){
+//        musicBox.playSound(index: sender.tag-10000)
+//        musicBox.audioPlayers[sender.tag-10000].volume = 1
+//        print("touch down")
+//    }
     
     
     

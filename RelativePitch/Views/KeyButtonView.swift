@@ -10,6 +10,7 @@ import UIKit
 
 class KeyButtonView: UIView {
 
+    let musicBox = MusicBox.shareInstance
     var button:UIButton!
     var shadow:UIView!
     var frontShadow:UIView!
@@ -40,8 +41,8 @@ class KeyButtonView: UIView {
         button.backgroundColor = .white
         button.layer.cornerRadius = 25
         button.clipsToBounds = true
-        button.addTarget(self, action: #selector(buttonPressed), for: .touchDown)
-        button.addTarget(self, action: #selector(buttonLifted), for: .touchUpInside)
+        button.addTarget(self, action: #selector(buttonPressed(sender:)), for: .touchDown)
+        button.addTarget(self, action: #selector(buttonLifted(sender:)), for: .touchUpInside)
         
         shadow = UIView(frame: CGRect(x: 5, y: 5, width: frame.width, height: frame.height))
         shadow.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25)
@@ -81,7 +82,17 @@ class KeyButtonView: UIView {
     }
     
     
-    @objc func buttonPressed(){
+    @objc func buttonPressed(sender:UIButton){
+        
+        musicBox.playSound(index: sender.tag-10000)
+        if musicBox.lastNote == musicBox.noteList[sender.tag-10000]{
+            print("Bingo")
+        }else{
+            print(">_<")
+        }
+        musicBox.audioPlayers[sender.tag-10000].volume = 1
+        
+        print("touch down")
         UIView.animate(withDuration: 0.2) {
             self.button.frame.origin.x = self.button.frame.origin.x+3
             self.button.frame.origin.y = self.button.frame.origin.y+3
@@ -98,7 +109,13 @@ class KeyButtonView: UIView {
         }
     }
     
-    @objc func buttonLifted(){
+    @objc func buttonLifted(sender :UIButton){
+        print("lifted")
+        while(musicBox.audioPlayers[sender.tag-10000].volume>0){
+            musicBox.audioPlayers[sender.tag-10000].volume = musicBox.audioPlayers[sender.tag-10000].volume - 0.05
+            usleep(10000)
+            //print(audioPlayers[sender.tag-10000].volume)
+        }
         UIView.animate(withDuration: 0.2) {
             self.button.frame.origin.x = self.button.frame.origin.x-3
             self.button.frame.origin.y = self.button.frame.origin.y-3

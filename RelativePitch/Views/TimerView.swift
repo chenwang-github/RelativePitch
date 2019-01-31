@@ -11,6 +11,10 @@ import AppusCircleTimer
 
 class TimerView: UIView , AppusCircleTimerDelegate {
     
+    
+    let musicBox = MusicBox.shareInstance
+    
+    let timer = AppusCircleTimer()
     var scoreLabel:CommonLabel!
     
 //    let scoreLabel:UILabel
@@ -36,7 +40,6 @@ class TimerView: UIView , AppusCircleTimerDelegate {
     
     func setTimers(){
         
-        let timer = AppusCircleTimer()
         timer.delegate = self
         
         timer.frame = CGRect(x: 0, y: 0, width: frame.size.width-7, height: frame.size.height-7)
@@ -55,16 +58,22 @@ class TimerView: UIView , AppusCircleTimerDelegate {
     
         
         self.addSubview(timer)
+        startTimer()
         
-        
-        
+    }
+    
+    
+    
+    func startTimer(){
+        musicBox.PlayRandom()
         timer.start()
     }
     
     func circleCounterTimeDidExpire(circleTimer: AppusCircleTimer) {
         circleTimer.reset()
         circleTimer.isActive = false
-        circleTimer.start()
+        self.startTimer()
+
     }
 
     
