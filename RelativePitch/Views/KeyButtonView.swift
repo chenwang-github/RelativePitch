@@ -84,15 +84,16 @@ class KeyButtonView: UIView {
     
     @objc func buttonPressed(sender:UIButton){
         
-        musicBox.playSound(index: sender.tag-10000)
-        if musicBox.lastNote == musicBox.noteList[sender.tag-10000]{
-            print("Bingo")
-        }else{
-            print(">_<")
-        }
-        musicBox.audioPlayers[sender.tag-10000].volume = 1
-        
-        print("touch down")
+//        musicBox.playSound(index: sender.tag-10000)
+//        if musicBox.lastNote == musicBox.noteList[sender.tag-10000]{
+//            print("Bingo")
+//            
+//        }else{
+//            print(">_<")
+//        }
+//        musicBox.audioPlayers[sender.tag-10000].volume = 1
+//        
+        //print("touch down")
         UIView.animate(withDuration: 0.2) {
             self.button.frame.origin.x = self.button.frame.origin.x+3
             self.button.frame.origin.y = self.button.frame.origin.y+3
@@ -110,12 +111,12 @@ class KeyButtonView: UIView {
     }
     
     @objc func buttonLifted(sender :UIButton){
-        print("lifted")
-        while(musicBox.audioPlayers[sender.tag-10000].volume>0){
-            musicBox.audioPlayers[sender.tag-10000].volume = musicBox.audioPlayers[sender.tag-10000].volume - 0.05
-            usleep(10000)
-            //print(audioPlayers[sender.tag-10000].volume)
-        }
+        //print("lifted")
+//        while(musicBox.audioPlayers[sender.tag-10000].volume>0){
+//            musicBox.audioPlayers[sender.tag-10000].volume = musicBox.audioPlayers[sender.tag-10000].volume - 0.05
+//            usleep(10000)
+//            //print(audioPlayers[sender.tag-10000].volume)
+//        }
         UIView.animate(withDuration: 0.2) {
             self.button.frame.origin.x = self.button.frame.origin.x-3
             self.button.frame.origin.y = self.button.frame.origin.y-3

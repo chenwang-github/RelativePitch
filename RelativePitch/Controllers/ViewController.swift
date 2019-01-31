@@ -14,6 +14,7 @@ class ViewController: UIViewController{
     var key:UIButton!
     
     let musicBox = MusicBox.shareInstance
+  
     
     var btn:UIButton!
     var btn2:UIButton!
@@ -107,9 +108,12 @@ class ViewController: UIViewController{
             let keyView = KeyButtonView(frame: CGRect(x: Double(i-1)*Double(keyWidth), y: Double(UIScreen.main.bounds.height), width: Double(keyWidth), height: 230.0))
             keyView.createLargeKey()
             buttons.append(keyView)
-            self.view.addSubview(keyView)
+            
             keyView.button.tag = i+10000-1
             self.view.addSubview(keyView)
+            
+            keyView.button.addTarget(self, action: #selector(keyReleased(sender:)), for: .touchUpInside)
+            keyView.button.addTarget(self, action: #selector(keyTapped(sender:)), for: .touchDown)
         }
         
         for i in 1...7{
@@ -126,20 +130,28 @@ class ViewController: UIViewController{
         
     }
 
-//    @objc private func keyReleased(sender:KeyButton){
-//        print("lifted")
-//        while(musicBox.audioPlayers[sender.tag-10000].volume>0){
-//            musicBox.audioPlayers[sender.tag-10000].volume = musicBox.audioPlayers[sender.tag-10000].volume - 0.05
-//            usleep(10000)
-//            //print(audioPlayers[sender.tag-10000].volume)
-//        }
-//    }
-//
-//    @objc private func keyTapped(sender:UIButton){
-//        musicBox.playSound(index: sender.tag-10000)
-//        musicBox.audioPlayers[sender.tag-10000].volume = 1
-//        print("touch down")
-//    }
+    @objc private func keyReleased(sender:KeyButton){
+        //print("lifted")
+        while(musicBox.audioPlayers[sender.tag-10000].volume>0){
+            musicBox.audioPlayers[sender.tag-10000].volume = musicBox.audioPlayers[sender.tag-10000].volume - 0.05
+            usleep(10000)
+            //print(audioPlayers[sender.tag-10000].volume)
+        }
+    }
+
+    @objc private func keyTapped(sender:UIButton){
+        musicBox.playSound(index: sender.tag-10000)
+        musicBox.audioPlayers[sender.tag-10000].volume = 1
+        
+        if musicBox.lastNote == musicBox.noteList[sender.tag-10000]{
+            print("Bingo")
+
+        }else{
+            print(">_<")
+        }
+        musicBox.audioPlayers[sender.tag-10000].volume = 1
+        //print("touch down")
+    }
     
     
     
