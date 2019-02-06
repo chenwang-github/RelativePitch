@@ -21,9 +21,11 @@ class ViewController: UIViewController{
     var btn:UIButton!
     var btn2:UIButton!
     var btn3:UIButton!
+    var resultLabel:CommonLabel!
     var buttons = Array<KeyButtonView>()
     var smallButtons = Array<KeyButtonView>()
     let keyWidth = (UIScreen.main.bounds.width+5)/7
+    
     
 
     override func viewDidLoad() {
@@ -33,6 +35,11 @@ class ViewController: UIViewController{
         //setUp timerView
         timerView = TimerView(frame: CGRect(x: 110, y: 150, width: 162, height: 162))
         self.view.addSubview(timerView)
+        
+        resultLabel = CommonLabel(frame: CGRect(x: (110+162)/2-50, y: 150+162+30, width: 100, height: 30))
+        resultLabel.layer.opacity = 0
+        resultLabel.textColor = UIColor.white
+        self.view.addSubview(resultLabel)
         
         self.createKey()
 
@@ -134,14 +141,24 @@ class ViewController: UIViewController{
 
     @objc private func keyReleased(sender:KeyButton){
         //print("lifted")
+        
         while(musicBox.audioPlayers[sender.tag-10000].volume>0){
             musicBox.audioPlayers[sender.tag-10000].volume = musicBox.audioPlayers[sender.tag-10000].volume - 0.05
             usleep(10000)
             //print(audioPlayers[sender.tag-10000].volume)
         }
+        
+        
+        UIView.animate(withDuration: 2, animations: {
+            self.resultLabel.layer.opacity = 1
+            self.resultLabel.layer.opacity = 0
+        }) { (Bool) in
+            self.timerView.circleCounterTimeDidExpire(circleTimer: self.timerView.timer)
+        }
     }
 
     @objc private func keyTapped(sender:UIButton){
+        self.timerView.timer.stop()
         musicBox.playSound(index: sender.tag-10000)
         musicBox.audioPlayers[sender.tag-10000].volume = 1
         
@@ -151,18 +168,27 @@ class ViewController: UIViewController{
             if musicBox.lastNote == musicBox.noteList[sender.tag-10000]{
                 score += 1
                 timerView.scoreLabel.text = String(score)
+                resultLabel.text = "Correct"
+                
                 //wrong
             }else{
-                print(">_<")
+                resultLabel.text = "Wrong"
+           
             }
         }
         
         
         musicBox.audioPlayers[sender.tag-10000].volume = 1
         
-        timerView.timer.stop()
-        sleep(1)
-        timerView.circleCounterTimeDidExpire(circleTimer: timerView.timer)
+        
+        //sleep(1)
+//        UIView.animate(withDuration: 0.5, animations: {
+//            self.resultLabel.layer.opacity = 1
+//        }) { (Bool) in
+//            UIView.animate(withDuration: 0.5) {
+//                self.resultLabel.layer.opacity = 0
+//            }
+//        }
         //print("touch down")
     }
     

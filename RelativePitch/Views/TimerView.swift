@@ -47,10 +47,24 @@ class TimerView: UIView , AppusCircleTimerDelegate {
         timer.totalTime = 5
         timer.isBackwards = true
         timer.backgroundColor = UIColor(red: 0.92, green: 0.34, blue: 0.34, alpha: 0)
-        timer.inactiveColor = UIColor(red: 0.92, green: 0.34, blue: 0.34, alpha: 1)
+        timer.inactiveColor = UIColor(red: 0.92, green: 0.34, blue: 0.34, alpha: 0)
         timer.pauseColor = .white
+        timer.activeColor = .white
         timer.isActive = false
         timer.thickness = 10
+        
+        
+//        backgroundColor = BGCOLOR
+//        activeColor = ACOLOR
+//        inactiveColor = ICOLOR
+//        pauseColor = PCOLOR
+//        fontColor = FONT_COLOR
+//        thickness = THICKNESS
+//        font = FONT
+//        completedTimeUpToLastStop = 0.0;
+//        offset = OFFSET
+//        isActive = true
+        
         
         timer.layer.shadowOpacity = 1 //阴影区域透明度
         timer.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor // 阴影区域颜色
@@ -71,6 +85,7 @@ class TimerView: UIView , AppusCircleTimerDelegate {
     }
     
     func circleCounterTimeDidExpire(circleTimer: AppusCircleTimer) {
+        
         answered = false
         circleTimer.reset()
         circleTimer.isActive = false
