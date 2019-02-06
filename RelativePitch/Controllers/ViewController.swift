@@ -14,7 +14,9 @@ class ViewController: UIViewController{
     var key:UIButton!
     
     let musicBox = MusicBox.shareInstance
-  
+    var timerView:TimerView!
+    var score = 0
+
     
     var btn:UIButton!
     var btn2:UIButton!
@@ -29,7 +31,7 @@ class ViewController: UIViewController{
         // Do any additional setup after loading the view, typically from a nib.
         
         //setUp timerView
-        let timerView = TimerView(frame: CGRect(x: 110, y: 150, width: 162, height: 162))
+        timerView = TimerView(frame: CGRect(x: 110, y: 150, width: 162, height: 162))
         self.view.addSubview(timerView)
         
         self.createKey()
@@ -143,13 +145,24 @@ class ViewController: UIViewController{
         musicBox.playSound(index: sender.tag-10000)
         musicBox.audioPlayers[sender.tag-10000].volume = 1
         
-        if musicBox.lastNote == musicBox.noteList[sender.tag-10000]{
-            print("Bingo")
-
-        }else{
-            print(">_<")
+        if(!timerView.answered){
+            timerView.answered = true
+            //correct
+            if musicBox.lastNote == musicBox.noteList[sender.tag-10000]{
+                score += 1
+                timerView.scoreLabel.text = String(score)
+                //wrong
+            }else{
+                print(">_<")
+            }
         }
+        
+        
         musicBox.audioPlayers[sender.tag-10000].volume = 1
+        
+        timerView.timer.stop()
+        sleep(1)
+        timerView.circleCounterTimeDidExpire(circleTimer: timerView.timer)
         //print("touch down")
     }
     

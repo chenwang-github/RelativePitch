@@ -16,6 +16,7 @@ class TimerView: UIView , AppusCircleTimerDelegate {
     
     let timer = AppusCircleTimer()
     var scoreLabel:CommonLabel!
+    var answered = false;
     
 //    let scoreLabel:UILabel
     
@@ -33,7 +34,7 @@ class TimerView: UIView , AppusCircleTimerDelegate {
         scoreLabel.backgroundColor = UIColor(red: 0.92, green: 0.34, blue: 0.34, alpha: 1)
         scoreLabel.textColor = .white
         scoreLabel.font = UIFont(name: "PingFangSC-Light", size: 38)
-        scoreLabel.text = "3"
+        scoreLabel.text = "0"
         self.addSubview(scoreLabel)
     }
     
@@ -70,6 +71,7 @@ class TimerView: UIView , AppusCircleTimerDelegate {
     }
     
     func circleCounterTimeDidExpire(circleTimer: AppusCircleTimer) {
+        answered = false
         circleTimer.reset()
         circleTimer.isActive = false
         self.startTimer()
