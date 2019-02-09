@@ -84,6 +84,12 @@ class TimerView: UIView , AppusCircleTimerDelegate {
         timer.start()
     }
     
+    func replay(gg:Bool){
+        if !gg {
+            circleCounterTimeDidExpire(circleTimer: timer)
+        }
+    }
+    
     func circleCounterTimeDidExpire(circleTimer: AppusCircleTimer) {
         
         answered = false

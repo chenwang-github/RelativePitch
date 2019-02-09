@@ -17,8 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        let root = ViewController()
-        self.window?.rootViewController = root
+        let root = MainViewController()
+        let nvc = UINavigationController(rootViewController: root)
+        nvc.navigationBar.isHidden = true
+        self.window?.rootViewController = nvc
         
         return true
     }

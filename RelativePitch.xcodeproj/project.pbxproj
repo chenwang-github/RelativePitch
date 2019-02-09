@@ -27,6 +27,8 @@
 		662EAE3721EEA2D200C037A7 /* Piano-Gb3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 662EAE2C21EEA2D200C037A7 /* Piano-Gb3.wav */; };
 		662EAE3921EEAB5000C037A7 /* KeyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662EAE3821EEAB5000C037A7 /* KeyButton.swift */; };
 		662EAE3D21F156A900C037A7 /* MusicBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662EAE3C21F156A900C037A7 /* MusicBox.swift */; };
+		66A51537220EB41000831DD7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A51536220EB41000831DD7 /* MainViewController.swift */; };
+		66A51539220EBBC900831DD7 /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A51538220EBBC900831DD7 /* GameOverViewController.swift */; };
 		66E3D90721F56F1C00DF342B /* MenuButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E3D90621F56F1C00DF342B /* MenuButtonView.swift */; };
 		66E3D90921F5963000DF342B /* KeyButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E3D90821F5963000DF342B /* KeyButtonView.swift */; };
 		66E3D90F21F691F000DF342B /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E3D90E21F691F000DF342B /* TimerView.swift */; };
@@ -55,6 +57,8 @@
 		662EAE2C21EEA2D200C037A7 /* Piano-Gb3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Piano-Gb3.wav"; sourceTree = "<group>"; };
 		662EAE3821EEAB5000C037A7 /* KeyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyButton.swift; sourceTree = "<group>"; };
 		662EAE3C21F156A900C037A7 /* MusicBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicBox.swift; sourceTree = "<group>"; };
+		66A51536220EB41000831DD7 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		66A51538220EBBC900831DD7 /* GameOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
 		66E3D90621F56F1C00DF342B /* MenuButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButtonView.swift; sourceTree = "<group>"; };
 		66E3D90821F5963000DF342B /* KeyButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyButtonView.swift; sourceTree = "<group>"; };
 		66E3D90E21F691F000DF342B /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
@@ -162,6 +166,8 @@
 			isa = PBXGroup;
 			children = (
 				662EADF721EE97D800C037A7 /* ViewController.swift */,
+				66A51536220EB41000831DD7 /* MainViewController.swift */,
+				66A51538220EBBC900831DD7 /* GameOverViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -315,8 +321,10 @@
 				662EAE3921EEAB5000C037A7 /* KeyButton.swift in Sources */,
 				662EADF821EE97D800C037A7 /* ViewController.swift in Sources */,
 				66E3D90921F5963000DF342B /* KeyButtonView.swift in Sources */,
+				66A51539220EBBC900831DD7 /* GameOverViewController.swift in Sources */,
 				66E3D90721F56F1C00DF342B /* MenuButtonView.swift in Sources */,
 				66E3D91121F6967C00DF342B /* CommonLabel.swift in Sources */,
+				66A51537220EB41000831DD7 /* MainViewController.swift in Sources */,
 				662EADF621EE97D800C037A7 /* AppDelegate.swift in Sources */,
 				662EAE3D21F156A900C037A7 /* MusicBox.swift in Sources */,
 			);

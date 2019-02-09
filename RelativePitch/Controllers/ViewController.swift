@@ -16,8 +16,11 @@ class ViewController: UIViewController{
     let musicBox = MusicBox.shareInstance
     var timerView:TimerView!
     var score = 0
+    var chance = 3
+    var gameOver = false
 
     
+    var chanceLabel:CommonLabel!
     var btn:UIButton!
     var btn2:UIButton!
     var btn3:UIButton!
@@ -41,48 +44,18 @@ class ViewController: UIViewController{
         resultLabel.textColor = UIColor.white
         self.view.addSubview(resultLabel)
         
+        chanceLabel = CommonLabel(frame:CGRect(x:50,y:50,width:50,height:50))
+        chanceLabel.textColor = UIColor.white
+        chanceLabel.text = "\(chance)/3"
+        self.view.addSubview(chanceLabel)
+        
         self.createKey()
 
         
-        
-        
-        
-//
-//
-//        btn = UIButton(frame: CGRect(x: 0, y: UIScreen.main.bounds.height, width: 50, height: 200))
-//        btn.backgroundColor = .white
-//        self.view.addSubview(btn)
-//        btn2 = UIButton(frame: CGRect(x: 50, y: UIScreen.main.bounds.height, width: 50, height: 200))
-//        btn2.backgroundColor = .white
-//        self.view.addSubview(btn2)
-//        btn3 = UIButton(frame: CGRect(x: 100, y: UIScreen.main.bounds.height, width: 50, height: 200))
-//        btn3.backgroundColor = .white
-//        self.view.addSubview(btn3)
-//
         popKey()
-        
-        
-        
-        
-        
-        //edit view for controller
+
         self.view.backgroundColor = UIColor(red: 0.92, green: 0.34, blue: 0.34, alpha: 1)
-        
-        //create keys and audio players:
-        //createKeys()
-        
-//        let menuButtonView = MenuButtonView(frame: CGRect(x: 100, y: 100, width: 182.82, height: 55))
-//        menuButtonView.label.text = "Resume"
-//        self.view.addSubview(menuButtonView)
-        
-//        let dispatchQueue = DispatchQueue(label: "QueueIdentification", qos: .background)
-//        dispatchQueue.async{
-//            //Time consuming task here
-//            while(true){
-//                self.musicBox.backgroundPlay(gap: 3)
-//            }
-//        }
-        
+
         
         
     }
@@ -153,7 +126,15 @@ class ViewController: UIViewController{
             self.resultLabel.layer.opacity = 1
             self.resultLabel.layer.opacity = 0
         }) { (Bool) in
-            self.timerView.circleCounterTimeDidExpire(circleTimer: self.timerView.timer)
+            self.timerView.replay(gg: self.gameOver)
+        }
+        if(gameOver){
+            print("game over")
+
+            self.present(GameOverViewController(), animated: true) {
+                self.navigationController?.popViewController(animated: false)
+            }
+            
         }
     }
 
@@ -173,7 +154,12 @@ class ViewController: UIViewController{
                 //wrong
             }else{
                 resultLabel.text = "Wrong"
-           
+                chance -= 1
+                chanceLabel.text = "\(chance)/3"
+                if(chance == 0){
+                    resultLabel.text = "Game Over"
+                    gameOver = true
+                }
             }
         }
         
@@ -181,15 +167,7 @@ class ViewController: UIViewController{
         musicBox.audioPlayers[sender.tag-10000].volume = 1
         
         
-        //sleep(1)
-//        UIView.animate(withDuration: 0.5, animations: {
-//            self.resultLabel.layer.opacity = 1
-//        }) { (Bool) in
-//            UIView.animate(withDuration: 0.5) {
-//                self.resultLabel.layer.opacity = 0
-//            }
-//        }
-        //print("touch down")
+
     }
     
     
