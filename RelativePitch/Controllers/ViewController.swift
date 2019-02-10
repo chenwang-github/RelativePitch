@@ -10,72 +10,75 @@ import UIKit
 import AppusCircleTimer
 
 class ViewController: UIViewController{
-    
-    var key:UIButton!
+
     
     let musicBox = MusicBox.shareInstance
     var timerView:TimerView!
-    var score = 0
-    var chance = 3
-    var gameOver = false
-
     
     var chanceLabel:CommonLabel!
-    var btn:UIButton!
-    var btn2:UIButton!
-    var btn3:UIButton!
     var resultLabel:CommonLabel!
+    
+    //note keys
     var buttons = Array<KeyButtonView>()
     var smallButtons = Array<KeyButtonView>()
-    let keyWidth = (UIScreen.main.bounds.width+5)/7
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("appear")
+        restart()
+        UIView.animate(withDuration: 0.5) {
+            appearFromWhite(view: self)
+        }
+    }
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
+        self.view.backgroundColor = customRed
         
-        //setUp timerView
-        timerView = TimerView(frame: CGRect(x: 110, y: 150, width: 162, height: 162))
-        self.view.addSubview(timerView)
-        
-        resultLabel = CommonLabel(frame: CGRect(x: (110+162)/2-50, y: 150+162+30, width: 100, height: 30))
-        resultLabel.layer.opacity = 0
-        resultLabel.textColor = UIColor.white
-        self.view.addSubview(resultLabel)
-        
+        //display 3/3 - 0/3
         chanceLabel = CommonLabel(frame:CGRect(x:50,y:50,width:50,height:50))
         chanceLabel.textColor = UIColor.white
         chanceLabel.text = "\(chance)/3"
         self.view.addSubview(chanceLabel)
         
-        self.createKey()
-
         
+        //the clock
+        timerView = TimerView(frame: CGRect(x: 110, y: 150, width: 162, height: 162))
+        self.view.addSubview(timerView)
+        
+        //Wrong/Correct/Gameover
+        resultLabel = CommonLabel(frame: CGRect(x: (110+162)/2-50, y: 150+162+30, width: 100, height: 30))
+        resultLabel.layer.opacity = 0
+        resultLabel.textColor = UIColor.white
+        self.view.addSubview(resultLabel)
+        
+        //create all the note keys
+        createKey()
+        
+        //animation for showing note keys
         popKey()
 
-        self.view.backgroundColor = UIColor(red: 0.92, green: 0.34, blue: 0.34, alpha: 1)
-
-        
-        
     }
+    
     
     func popKey(){
         var i = 0
         while( i < buttons.count){
             UIView.animate(withDuration: 0.5+(0.2*Double(i))) {
-                self.buttons[i].frame.origin.y = UIScreen.main.bounds.height-200
+                self.buttons[i].frame.origin.y = screenHeight-200
             }
             i+=1
         }
         var j = 0
         while( j < smallButtons.count){
             UIView.animate(withDuration: 0.5+(0.2*Double(i+j))) {
-                self.smallButtons[j].frame.origin.y = UIScreen.main.bounds.height-80
+                self.smallButtons[j].frame.origin.y = screenHeight-80
             }
             j+=1
         }
-        
     }
    
     
@@ -104,7 +107,7 @@ class ViewController: UIViewController{
                 keyView.createSmallKey()
                 keyView.button.layer.cornerRadius = 18
                 keyView.button.layer.borderWidth = 2
-                keyView.button.layer.borderColor = UIColor(red: 0.92, green: 0.34, blue: 0.34, alpha: 1).cgColor
+                keyView.button.layer.borderColor = customRed.cgColor
                 smallButtons.append(keyView)
                 self.view.addSubview(keyView)
             }
@@ -112,7 +115,7 @@ class ViewController: UIViewController{
         
     }
 
-    @objc private func keyReleased(sender:KeyButton){
+    @objc private func keyReleased(sender:UIButton){
         //print("lifted")
         
         while(musicBox.audioPlayers[sender.tag-10000].volume>0){
@@ -126,14 +129,34 @@ class ViewController: UIViewController{
             self.resultLabel.layer.opacity = 1
             self.resultLabel.layer.opacity = 0
         }) { (Bool) in
-            self.timerView.replay(gg: self.gameOver)
+            self.timerView.replay(gg: gameOver)
         }
         if(gameOver){
             print("game over")
-
-            self.present(GameOverViewController(), animated: true) {
-                self.navigationController?.popViewController(animated: false)
+            
+            if score > bestScore{
+                bestScore = score
+                defualts.set(bestScore, forKey: "best")
             }
+            
+            print(bestScore)
+            
+            //special transition
+            let whiteScreen = UIView(frame: UIScreen.main.bounds)
+            whiteScreen.backgroundColor = UIColor.white
+            whiteScreen.layer.opacity = 0
+            self.view.addSubview(whiteScreen)
+            
+            UIView.animate(withDuration: 0.5, animations: {
+                whiteScreen.layer.opacity = 1
+                
+            }) { (bool) in
+                self.present(GameOverViewController(), animated: false) {
+                    whiteTransitionPop(fromView: self)
+                }
+                whiteScreen.removeFromSuperview()
+            }
+            
             
         }
     }

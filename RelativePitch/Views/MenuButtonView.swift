@@ -11,6 +11,7 @@ import UIKit
 class MenuButtonView: UIView {
     
     var button:UIButton!
+    var shadow:UIView!
     var label:CommonLabel!
 
     override init(frame: CGRect) {
@@ -26,14 +27,13 @@ class MenuButtonView: UIView {
         button.backgroundColor = .white
         button.layer.cornerRadius = 25
         button.clipsToBounds = true
-        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         
         
         
         
         
         //for shadow
-        let shadow = UIView()
+        shadow = UIView()
         shadow.frame = CGRect(x: 7 , y: 7, width: frame.size.width-7, height: frame.size.height-7)
         shadow.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25)
         shadow.layer.cornerRadius = 25
@@ -58,13 +58,7 @@ class MenuButtonView: UIView {
        
         
     }
-    
-    
-    
-    
-    @objc func buttonPressed(){
-        print("!!!!!")
-    }
+
     
     
     required init?(coder aDecoder: NSCoder) {

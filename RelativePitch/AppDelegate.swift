@@ -10,7 +10,6 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
     var window: UIWindow?
 
 
@@ -21,6 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let nvc = UINavigationController(rootViewController: root)
         nvc.navigationBar.isHidden = true
         self.window?.rootViewController = nvc
+        
+        
+        
+        defualts = UserDefaults.standard
+        
         
         return true
     }

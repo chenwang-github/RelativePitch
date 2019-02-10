@@ -14,7 +14,7 @@ class CommonLabel: UILabel {
         super.init(frame:frame)
         //my modification
         self.backgroundColor = UIColor(red: 0.92, green: 0.34, blue: 0.34, alpha: 0)
-        self.textColor = UIColor(red: 0.92, green: 0.34, blue: 0.34, alpha: 1)
+        self.textColor = customRed
         self.font = UIFont(name: "PingFangSC-Light", size: 24)
         self.textAlignment = .center
         
