@@ -9,11 +9,16 @@
 import UIKit
 import AppusCircleTimer
 
+protocol TimerViewDelegate {
+    func Timeup()
+}
+
+
 class TimerView: UIView , AppusCircleTimerDelegate {
     
     
     let musicBox = MusicBox.shareInstance
-    
+    var delegate : TimerViewDelegate!
     let timer = AppusCircleTimer()
     var scoreLabel:CommonLabel!
     var answered = false;
@@ -86,18 +91,23 @@ class TimerView: UIView , AppusCircleTimerDelegate {
     
     func replay(gg:Bool){
         if !gg {
+            answered = true
             circleCounterTimeDidExpire(circleTimer: timer)
         }
     }
     
     func circleCounterTimeDidExpire(circleTimer: AppusCircleTimer) {
-        
-        answered = false
-        circleTimer.reset()
-        circleTimer.isActive = false
-        self.startTimer()
+        if !answered{
+            delegate.Timeup()
+        }else{
+            circleTimer.reset()
+            circleTimer.isActive = false
+            self.startTimer()
+            answered = false
+        }
 
     }
+
 
     
     required init?(coder aDecoder: NSCoder) {

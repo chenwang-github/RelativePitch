@@ -58,12 +58,14 @@ class ViewController: UIViewController{
         
         
         //the clock
-        timerView = TimerView(frame: CGRect(x: 110, y: 150, width: 162, height: 162))
+        timerView = TimerView(frame: CGRect(x: screenWidth/2-screenWidth/4, y: screenHeight/4, width: screenWidth/2, height: screenWidth/2))
+        timerView.delegate = self
         self.view.addSubview(timerView)
         
         //Wrong/Correct/Gameover
-        resultLabel = CommonLabel(frame: CGRect(x: (110+162)/2-50, y: 150+162+30, width: 100, height: 30))
+        resultLabel = CommonLabel(frame: CGRect(x: 0, y: screenHeight/2+screenWidth/8, width: screenWidth, height: 40))
         resultLabel.layer.opacity = 0
+        resultLabel.text = "Wrong"
         resultLabel.textColor = UIColor.white
         self.view.addSubview(resultLabel)
         
@@ -159,7 +161,12 @@ class ViewController: UIViewController{
             //print(audioPlayers[sender.tag-10000].volume)
         }
         
+        responds()
         
+    }
+    
+    
+    public func responds(){
         UIView.animate(withDuration: 2, animations: {
             self.resultLabel.layer.opacity = 1
             self.resultLabel.layer.opacity = 0
@@ -191,8 +198,6 @@ class ViewController: UIViewController{
                 }
                 whiteScreen.removeFromSuperview()
             }
-            
-            
         }
     }
 
@@ -231,7 +236,18 @@ class ViewController: UIViewController{
 
     }
     
-    
-    
+}
+
+extension ViewController: TimerViewDelegate{
+    func Timeup() {
+        chance -= 1
+        chanceLabel.text = "\(chance)/5"
+        resultLabel.text = "Miss"
+        if(chance == 0){
+            resultLabel.text = "Game Over"
+            gameOver = true
+        }
+        responds()
+    }
 }
 
