@@ -14,6 +14,8 @@ protocol TimerViewDelegate {
 }
 
 
+
+
 class TimerView: UIView , AppusCircleTimerDelegate {
     
     
@@ -114,3 +116,5 @@ class TimerView: UIView , AppusCircleTimerDelegate {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+
