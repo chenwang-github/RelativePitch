@@ -11,6 +11,31 @@ import AppusCircleTimer
 
 class ViewController: UIViewController{
 
+    var enableKeys = [10000:true,
+                     10001:true,
+                     10002:true,
+                     10003:true,
+                     10004:true,
+                     10005:true,
+                     10006:true,
+                     10007:false,
+                     10008:false,
+                     10009:false,
+                     10010:false,
+                     10011:false]
+    
+    var keyLabel = [10000:"C",
+                    10001:"D",
+                    10002:"E",
+                    10003:"F",
+                    10004:"G",
+                    10005:"A",
+                    10006:"B",
+                    10007:"Db",
+                    10008:"Eb",
+                    10009:"Gb",
+                    10010:"Ab",
+                    10011:"Bb"]
     
     let musicBox = MusicBox.shareInstance
     var timerView:TimerView!
@@ -41,7 +66,7 @@ class ViewController: UIViewController{
         //display 3/3 - 0/3
         chanceLabel = CommonLabel(frame:CGRect(x:50,y:50,width:50,height:50))
         chanceLabel.textColor = UIColor.white
-        chanceLabel.text = "\(chance)/3"
+        chanceLabel.text = "\(chance)/5"
         self.view.addSubview(chanceLabel)
         
         
@@ -89,28 +114,47 @@ class ViewController: UIViewController{
     
     private func createKey(){
         
+        //large key
         for i in 1...7{
             let keyView = KeyButtonView(frame: CGRect(x: Double(i-1)*Double(keyWidth), y: Double(UIScreen.main.bounds.height), width: Double(keyWidth), height: 230.0))
             keyView.createLargeKey()
             buttons.append(keyView)
             
             keyView.button.tag = i+10000-1
+            keyView.label.text = keyLabel[i+10000-1]
+            
+            if !enableKeys[keyView.button.tag]!{
+                keyView.layer.opacity = opLevel
+            }
+            
             self.view.addSubview(keyView)
             
             keyView.button.addTarget(self, action: #selector(keyReleased(sender:)), for: .touchUpInside)
             keyView.button.addTarget(self, action: #selector(keyTapped(sender:)), for: .touchDown)
         }
         
-        for i in 1...7{
-            if (i == 2 || i == 3 || i == 5 || i == 6 || i == 7){
-                let keyView = KeyButtonView(frame: CGRect(x: Double(i-1)*Double(keyWidth)-Double(keyWidth*0.3)-5, y: Double(UIScreen.main.bounds.height), width: Double(keyWidth*0.7), height: 230.0*0.5))
-                keyView.createSmallKey()
-                keyView.button.layer.cornerRadius = 18
-                keyView.button.layer.borderWidth = 2
-                keyView.button.layer.borderColor = customRed.cgColor
-                smallButtons.append(keyView)
-                self.view.addSubview(keyView)
+        
+        //small key
+        let smallKeyDict = [8:2,9:3,10:5,11:6,12:7]
+        for j in 8...12{
+            let i = smallKeyDict[j]!
+            let keyView = KeyButtonView(frame: CGRect(x: Double(i-1)*Double(keyWidth)-Double(keyWidth*0.3)-5, y: Double(UIScreen.main.bounds.height), width: Double(keyWidth*0.7), height: 230.0*0.5))
+            keyView.createSmallKey()
+            keyView.button.layer.cornerRadius = 18
+            keyView.button.layer.borderWidth = 2
+            keyView.button.layer.borderColor = customRed.cgColor
+            keyView.button.tag = j+10000-1
+            keyView.label.text = keyLabel[j+10000-1]
+            
+            if !enableKeys[keyView.button.tag]!{
+                keyView.layer.opacity = opLevel
             }
+            
+            smallButtons.append(keyView)
+            self.view.addSubview(keyView)
+            
+            keyView.button.addTarget(self, action: #selector(keyReleased(sender:)), for: .touchUpInside)
+            keyView.button.addTarget(self, action: #selector(keyTapped(sender:)), for: .touchDown)
         }
         
     }
@@ -162,6 +206,9 @@ class ViewController: UIViewController{
     }
 
     @objc private func keyTapped(sender:UIButton){
+        if (!enableKeys[sender.tag]!){
+            return
+        }
         self.timerView.timer.stop()
         musicBox.playSound(index: sender.tag-10000)
         musicBox.audioPlayers[sender.tag-10000].volume = 1
@@ -178,7 +225,7 @@ class ViewController: UIViewController{
             }else{
                 resultLabel.text = "Wrong"
                 chance -= 1
-                chanceLabel.text = "\(chance)/3"
+                chanceLabel.text = "\(chance)/5"
                 if(chance == 0){
                     resultLabel.text = "Game Over"
                     gameOver = true

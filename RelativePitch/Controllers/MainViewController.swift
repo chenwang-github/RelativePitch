@@ -14,7 +14,6 @@ class MainViewController: UIViewController {
     var start:MenuButtonView!
 
     
-    
     override func viewWillAppear(_ animated: Bool) {
         UIView.animate(withDuration: 0.5) {
             appearFromWhite(view: self)

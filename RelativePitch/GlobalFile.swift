@@ -14,7 +14,7 @@ var defualts:UserDefaults!
 //game progress
 var score = 0
 var bestScore = 0
-var chance = 3
+var chance = 5
 var gameOver = false
 
 
@@ -27,6 +27,7 @@ let keyWidth = (screenWidth+5)/7
 //Color
 let customRed = UIColor(red: 0.92, green: 0.34, blue: 0.34, alpha: 1)
 let shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+let opLevel :Float = 0.3
 
 //Tag
 let startTag = 200001
@@ -35,9 +36,13 @@ let startTag = 200001
 
 public func restart(){
     score = 0
-    chance = 3
+    chance = 5
     gameOver = false
 }
+
+
+
+
 
 public func whiteTransition(fromView:UIViewController, toView:UIViewController){
     let whiteScreen = UIView(frame: UIScreen.main.bounds)

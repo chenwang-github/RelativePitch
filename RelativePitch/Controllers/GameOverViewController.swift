@@ -13,13 +13,15 @@ class GameOverViewController: UIViewController {
     var current:CommonLabel!
     var best:CommonLabel!
 
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    override func viewWillAppear(_ animated: Bool) {
         if let maxFromData = defualts.integer(forKey: "best") as? Int{
             bestScore = maxFromData
+        
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         
         

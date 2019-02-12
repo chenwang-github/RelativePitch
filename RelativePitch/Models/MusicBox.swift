@@ -16,7 +16,7 @@ class MusicBox{
     public static let shareInstance = MusicBox()
     
     //noteList stores all the notes
-    var noteList = ["Piano-C3","Piano-D3","Piano-E3","Piano-F3","Piano-G3","Piano-A3","Piano-B3"]
+    var noteList = ["Piano-C3","Piano-D3","Piano-E3","Piano-F3","Piano-G3","Piano-A3","Piano-B3","Piano-Db3","Piano-Eb3","Piano-Gb3","Piano-Ab3","Piano-Bb3"]
     
     var lastNote:String!
     
