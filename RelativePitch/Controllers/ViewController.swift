@@ -96,6 +96,7 @@ class ViewController: UIViewController{
                 self.buttons[i].frame.origin.y = screenHeight-200
             }
             i+=1
+            //11
         }
         var j = 0
         while( j < smallButtons.count){
