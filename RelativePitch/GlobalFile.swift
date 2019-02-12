@@ -33,14 +33,26 @@ let opLevel :Float = 0.3
 let startTag = 200001
 
 //function
-
 public func restart(){
     score = 0
     chance = 5
     gameOver = false
 }
 
+//enable
 
+var enableKeys : [Int:Bool] = [10000:false,
+                  10001:false,
+                  10002:true,
+                  10003:true,
+                  10004:true,
+                  10005:false,
+                  10006:false,
+                  10007:false,
+                  10008:false,
+                  10009:false,
+                  10010:false,
+                  10011:false]
 
 
 

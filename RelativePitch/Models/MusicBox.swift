@@ -60,9 +60,14 @@ class MusicBox{
     public func PlayRandom(){
         
         let index = Int.random(in: 0 ..< noteList.count)
-        playSound(index: index)
-        lastNote = noteList[index]
-        print(lastNote!)
+    
+        if enableKeys[index+10000]!{
+            playSound(index: index)
+            lastNote = noteList[index]
+            print(lastNote!)
+        }else{
+            PlayRandom()
+        }
     }
 
 //    public func backgroundPlay(gap:UInt32){

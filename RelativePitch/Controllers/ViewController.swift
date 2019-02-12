@@ -10,19 +10,6 @@ import UIKit
 import AppusCircleTimer
 
 class ViewController: UIViewController{
-
-    var enableKeys = [10000:true,
-                     10001:true,
-                     10002:true,
-                     10003:true,
-                     10004:true,
-                     10005:true,
-                     10006:true,
-                     10007:false,
-                     10008:false,
-                     10009:false,
-                     10010:false,
-                     10011:false]
     
     var keyLabel = [10000:"C",
                     10001:"D",
@@ -162,6 +149,9 @@ class ViewController: UIViewController{
 
     @objc private func keyReleased(sender:UIButton){
         //print("lifted")
+        if (!enableKeys[sender.tag]!){
+            return
+        }
         
         while(musicBox.audioPlayers[sender.tag-10000].volume>0){
             musicBox.audioPlayers[sender.tag-10000].volume = musicBox.audioPlayers[sender.tag-10000].volume - 0.05
