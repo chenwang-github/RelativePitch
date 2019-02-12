@@ -39,7 +39,7 @@ public func restart(){
     gameOver = false
 }
 
-//enable
+//enable keys   
 
 var enableKeys : [Int:Bool] = [10000:false,
                   10001:false,
