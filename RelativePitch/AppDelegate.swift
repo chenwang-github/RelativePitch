@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         defualts = UserDefaults.standard
         bestScore = defualts.integer(forKey: "best")
+
         
         return true
     }

@@ -38,6 +38,7 @@ class ViewController: UIViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         print("appear")
+        enableKeys = levels[currentLevel]!
         restart()
         UIView.animate(withDuration: 0.5) {
             appearFromWhite(view: self)
@@ -112,7 +113,9 @@ class ViewController: UIViewController{
             buttons.append(keyView)
             
             keyView.button.tag = i+10000-1
+            keyView.tag = i+10000-1
             keyView.label.text = keyLabel[i+10000-1]
+            
             
             if !enableKeys[keyView.button.tag]!{
                 keyView.layer.opacity = opLevel
@@ -135,6 +138,7 @@ class ViewController: UIViewController{
             keyView.button.layer.borderWidth = 2
             keyView.button.layer.borderColor = customRed.cgColor
             keyView.button.tag = j+10000-1
+            keyView.tag = j+10000-1
             keyView.label.text = keyLabel[j+10000-1]
             
             if !enableKeys[keyView.button.tag]!{
@@ -149,9 +153,25 @@ class ViewController: UIViewController{
         }
         
     }
+    
+    private func updateKey(){
+        UIView.animate(withDuration: 1.5) {
+            var i = 0
+            while i < enableKeys.count{
+                let KeyView = self.view.viewWithTag(10000+i)
+                if enableKeys[10000+i]!{
+                    KeyView?.layer.opacity = 1
+                }else{
+                    KeyView?.layer.opacity = opLevel
+                }
+                i+=1
+            }
+        }
+    }
 
     @objc private func keyReleased(sender:UIButton){
         //print("lifted")
+        enableKeys = levels[currentLevel]!
         if (!enableKeys[sender.tag]!){
             return
         }
@@ -200,6 +220,11 @@ class ViewController: UIViewController{
                 whiteScreen.removeFromSuperview()
             }
         }
+        
+        if(scoreToNextLevel == 0){
+            scoreToNextLevel = 2
+            updateKey()
+        }
     }
 
     @objc private func keyTapped(sender:UIButton){
@@ -215,9 +240,10 @@ class ViewController: UIViewController{
             //correct
             if musicBox.lastNote == musicBox.noteList[sender.tag-10000]{
                 score += 1
+                scoreToNextLevel-=1
                 timerView.scoreLabel.text = String(score)
                 resultLabel.text = "Correct"
-                
+                print(scoreToNextLevel)
                 //wrong
             }else{
                 resultLabel.text = "Wrong"
@@ -227,6 +253,13 @@ class ViewController: UIViewController{
                     resultLabel.text = "Game Over"
                     gameOver = true
                 }
+            }
+            if(scoreToNextLevel == 0){
+                if currentLevel != maxLevel{
+                    currentLevel+=1
+                    resultLabel.text = "Level \(currentLevel)"
+                }
+                print("!!!!!!!")
             }
         }
         

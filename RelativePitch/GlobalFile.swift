@@ -15,6 +15,8 @@ var defualts:UserDefaults!
 var score = 0
 var bestScore = 0
 var chance = 5
+var scoreToNextLevel = 5
+var maxLevel = 15
 var gameOver = false
 
 
@@ -40,20 +42,15 @@ public func restart(){
     gameOver = false
 }
 
-//enable keys   
 
-var enableKeys : [Int:Bool] = [10000:false,
-                  10001:false,
-                  10002:true,
-                  10003:true,
-                  10004:true,
-                  10005:false,
-                  10006:false,
-                  10007:false,
-                  10008:false,
-                  10009:false,
-                  10010:false,
-                  10011:false]
+
+var levels : [Int: [Int:Bool]] = [1:level1,2:level2,3:level3,4:level4,5:level5,6:level6,7:level7,8:level8,9:level9,10:level10,11:level11,12:level12,13:level13,14:level14,15:level15]
+var currentLevel = 1
+
+var enableKeys : [Int:Bool] = [:]
+
+
+
 
 
 

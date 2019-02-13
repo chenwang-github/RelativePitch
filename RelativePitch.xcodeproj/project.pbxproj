@@ -27,6 +27,7 @@
 		662EAE3621EEA2D200C037A7 /* Piano-B3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 662EAE2B21EEA2D100C037A7 /* Piano-B3.wav */; };
 		662EAE3721EEA2D200C037A7 /* Piano-Gb3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 662EAE2C21EEA2D200C037A7 /* Piano-Gb3.wav */; };
 		662EAE3D21F156A900C037A7 /* MusicBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662EAE3C21F156A900C037A7 /* MusicBox.swift */; };
+		664DCDAD2213B411004C6ACC /* Levels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664DCDAC2213B411004C6ACC /* Levels.swift */; };
 		66A51537220EB41000831DD7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A51536220EB41000831DD7 /* MainViewController.swift */; };
 		66A51539220EBBC900831DD7 /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A51538220EBBC900831DD7 /* GameOverViewController.swift */; };
 		66A5153B220EC13A00831DD7 /* GlobalFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A5153A220EC13A00831DD7 /* GlobalFile.swift */; };
@@ -58,6 +59,7 @@
 		662EAE2B21EEA2D100C037A7 /* Piano-B3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Piano-B3.wav"; sourceTree = "<group>"; };
 		662EAE2C21EEA2D200C037A7 /* Piano-Gb3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Piano-Gb3.wav"; sourceTree = "<group>"; };
 		662EAE3C21F156A900C037A7 /* MusicBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicBox.swift; sourceTree = "<group>"; };
+		664DCDAC2213B411004C6ACC /* Levels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Levels.swift; sourceTree = "<group>"; };
 		66A51536220EB41000831DD7 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		66A51538220EBBC900831DD7 /* GameOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
 		66A5153A220EC13A00831DD7 /* GlobalFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalFile.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 		662EADF421EE97D800C037A7 /* RelativePitch */ = {
 			isa = PBXGroup;
 			children = (
+				664DCDAC2213B411004C6ACC /* Levels.swift */,
 				66A5153A220EC13A00831DD7 /* GlobalFile.swift */,
 				662EAE0121EE97D900C037A7 /* Info.plist */,
 				662EADF521EE97D800C037A7 /* AppDelegate.swift */,
@@ -343,6 +346,7 @@
 			files = (
 				66E3D90F21F691F000DF342B /* TimerView.swift in Sources */,
 				662EADF821EE97D800C037A7 /* ViewController.swift in Sources */,
+				664DCDAD2213B411004C6ACC /* Levels.swift in Sources */,
 				66E3D90921F5963000DF342B /* KeyButtonView.swift in Sources */,
 				66A51539220EBBC900831DD7 /* GameOverViewController.swift in Sources */,
 				66E3D90721F56F1C00DF342B /* MenuButtonView.swift in Sources */,

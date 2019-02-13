@@ -60,7 +60,7 @@ class MusicBox{
     public func PlayRandom(){
         
         let index = Int.random(in: 0 ..< noteList.count)
-    
+        enableKeys = levels[currentLevel]!
         if enableKeys[index+10000]!{
             playSound(index: index)
             lastNote = noteList[index]
