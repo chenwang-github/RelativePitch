@@ -15,7 +15,7 @@ var defualts:UserDefaults!
 var score = 0
 var bestScore = 0
 var chance = 5
-var scoreToNextLevel = 5
+var scoreToNextLevel = 2
 var maxLevel = 15
 var gameOver = false
 
@@ -24,10 +24,13 @@ var gameOver = false
 let screenWidth = UIScreen.main.bounds.size.width
 let screenHeight = UIScreen.main.bounds.size.height
 let keyWidth = (screenWidth+5)/7
+let MenuButtonWidth = screenWidth/2
+let MenuButtonHeight = screenWidth/6
 
 
 
 //Color
+let tranparent = UIColor(red: 0.92, green: 0.34, blue: 0.34, alpha: 0).cgColor
 let customRed = UIColor(red: 0.92, green: 0.34, blue: 0.34, alpha: 1)
 let shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
 let opLevel :Float = 0.3
@@ -36,10 +39,12 @@ let opLevel :Float = 0.3
 let startTag = 200001
 
 //function
-public func restart(){
+public func reset(){
     score = 0
     chance = 5
     gameOver = false
+    enableKeys = levels[currentLevel]!
+    scoreToNextLevel = 2
 }
 
 
@@ -97,5 +102,25 @@ public func appearFromWhite(view:UIViewController){
         
     }) { (bool) in
         whiteScreen.removeFromSuperview()
+    }
+}
+
+
+
+extension UIView {
+    func setRoundedCorners(ratio: Double?) {
+        if let r = ratio {
+            self.layer.cornerRadius = self.frame.size.width*CGFloat(r) // for specific corner ratio
+        } else {
+            
+            // circle
+            // i would put a condition, as width and height differ:
+            if(self.frame.size.width == self.frame.size.height) {
+                self.layer.cornerRadius = self.frame.size.width/2 // for circles
+            } else {
+                //
+            }
+        }
+        self.layer.borderWidth = 0
     }
 }

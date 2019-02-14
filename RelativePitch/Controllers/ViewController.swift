@@ -34,12 +34,9 @@ class ViewController: UIViewController{
     //note keys
     var buttons = Array<KeyButtonView>()
     var smallButtons = Array<KeyButtonView>()
-    
+    var pauseButton: MenuButtonView!
     
     override func viewWillAppear(_ animated: Bool) {
-        print("appear")
-        enableKeys = levels[currentLevel]!
-        restart()
         UIView.animate(withDuration: 0.5) {
             appearFromWhite(view: self)
         }
@@ -57,6 +54,13 @@ class ViewController: UIViewController{
         chanceLabel.textColor = UIColor.white
         chanceLabel.text = "\(chance)/5"
         self.view.addSubview(chanceLabel)
+        
+        //pasue button
+        pauseButton = MenuButtonView(frame:CGRect(x:screenWidth-100,y:50,width:50,height:50))
+        pauseButton.button.backgroundColor = UIColor.white
+        pauseButton.button.addTarget(self, action: #selector(paused), for: .touchUpInside)
+        pauseButton.label.text = "||"
+        self.view.addSubview(pauseButton)
         
         
         //the clock
@@ -167,8 +171,17 @@ class ViewController: UIViewController{
                 i+=1
             }
         }
+        print("updated")
     }
 
+    @objc private func paused(){
+        timerView.timer.stop()
+        let vc = PauseViewController()
+        vc.delegate = self
+        present(vc, animated: true)
+    }
+    
+    
     @objc private func keyReleased(sender:UIButton){
         //print("lifted")
         enableKeys = levels[currentLevel]!
@@ -183,9 +196,36 @@ class ViewController: UIViewController{
         }
         
         responds()
-        
+        print("released")
     }
     
+    
+    public func gameover(){
+        print("game over")
+        
+        if score > bestScore{
+            bestScore = score
+            defualts.set(bestScore, forKey: "best")
+        }
+        
+        print(bestScore)
+        
+        //special transition
+        let whiteScreen = UIView(frame: UIScreen.main.bounds)
+        whiteScreen.backgroundColor = UIColor.white
+        whiteScreen.layer.opacity = 0
+        self.view.addSubview(whiteScreen)
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            whiteScreen.layer.opacity = 1
+            
+        }) { (bool) in
+            self.present(GameOverViewController(), animated: false) {
+                whiteTransitionPop(fromView: self)
+            }
+            whiteScreen.removeFromSuperview()
+        }
+    }
     
     public func responds(){
         UIView.animate(withDuration: 2, animations: {
@@ -195,30 +235,7 @@ class ViewController: UIViewController{
             self.timerView.replay(gg: gameOver)
         }
         if(gameOver){
-            print("game over")
-            
-            if score > bestScore{
-                bestScore = score
-                defualts.set(bestScore, forKey: "best")
-            }
-            
-            print(bestScore)
-            
-            //special transition
-            let whiteScreen = UIView(frame: UIScreen.main.bounds)
-            whiteScreen.backgroundColor = UIColor.white
-            whiteScreen.layer.opacity = 0
-            self.view.addSubview(whiteScreen)
-            
-            UIView.animate(withDuration: 0.5, animations: {
-                whiteScreen.layer.opacity = 1
-                
-            }) { (bool) in
-                self.present(GameOverViewController(), animated: false) {
-                    whiteTransitionPop(fromView: self)
-                }
-                whiteScreen.removeFromSuperview()
-            }
+            gameover()
         }
         
         if(scoreToNextLevel == 0){
@@ -259,7 +276,7 @@ class ViewController: UIViewController{
                     currentLevel+=1
                     resultLabel.text = "Level \(currentLevel)"
                 }
-                print("!!!!!!!")
+                
             }
         }
         
@@ -267,7 +284,7 @@ class ViewController: UIViewController{
         musicBox.audioPlayers[sender.tag-10000].volume = 1
         
         
-
+        print("pressed")
     }
     
 }
@@ -282,6 +299,18 @@ extension ViewController: TimerViewDelegate{
             gameOver = true
         }
         responds()
+    }
+}
+
+extension ViewController:PauseViewDelegate{
+    
+    func passValue(gg:Bool) {
+        if gg{
+            gameOver = true
+            responds()
+        }else{
+            timerView.timer.resume()
+        }
     }
 }
 

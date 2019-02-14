@@ -15,6 +15,7 @@ class MainViewController: UIViewController {
 
     
     override func viewWillAppear(_ animated: Bool) {
+        //trasition
         UIView.animate(withDuration: 0.5) {
             appearFromWhite(view: self)
         }
@@ -25,7 +26,6 @@ class MainViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         self.view.backgroundColor = customRed
-        
         addButtons()
     }
     
@@ -35,15 +35,13 @@ class MainViewController: UIViewController {
         start.label.text = "START"
         start.button.addTarget(self, action: #selector(buttonLifted(sender:)), for: .touchUpInside)
         start.button.addTarget(self, action: #selector(buttonPressed(sender:)), for: .touchDown)
+        start.button.setRoundedCorners(ratio: 0.1)
+        start.shadow.setRoundedCorners(ratio: 0.1)
         self.view.addSubview(start)
     }
     
 
     @objc func buttonLifted(sender:UIButton){
-        UIView.animate(withDuration: 0.3) {
-            self.start.shadow.frame = CGRect(x: 7, y: 7, width: self.start.frame.size.width-7, height: self.start.frame.size.height-7)
-            self.start.button.frame = CGRect(x: 0, y: 0, width: self.start.frame.size.width-7, height: self.start.frame.size.height-7)
-        }
         switch sender.tag{
         case startTag:
             whiteTransition(fromView: self, toView: ViewController())
@@ -59,10 +57,6 @@ class MainViewController: UIViewController {
     
     
     @objc func buttonPressed(sender:UIButton){
-        UIView.animate(withDuration: 0.3) {
-            self.start.shadow.frame = CGRect(x: 3, y: 3, width: self.start.frame.size.width-7, height: self.start.frame.size.height-7)
-            self.start.button.frame = CGRect(x: 3, y: 3, width: self.start.frame.size.width-7, height: self.start.frame.size.height-7)
-        }
     }
     
     /*
@@ -76,3 +70,4 @@ class MainViewController: UIViewController {
     */
 
 }
+

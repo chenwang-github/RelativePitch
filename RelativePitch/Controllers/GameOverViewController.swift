@@ -16,7 +16,7 @@ class GameOverViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         if let maxFromData = defualts?.integer(forKey: "best") {
             bestScore = maxFromData
-        
+            currentLevel = 1
         }
     }
     
@@ -45,6 +45,7 @@ class GameOverViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.dismiss(animated: false) {
+            reset()
         }
     }
     
