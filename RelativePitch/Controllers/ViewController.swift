@@ -175,6 +175,7 @@ class ViewController: UIViewController{
     }
 
     @objc private func paused(){
+        stopped = true
         timerView.timer.stop()
         let vc = PauseViewController()
         vc.delegate = self
@@ -185,9 +186,9 @@ class ViewController: UIViewController{
     @objc private func keyReleased(sender:UIButton){
         //print("lifted")
         enableKeys = levels[currentLevel]!
-        if (!enableKeys[sender.tag]!){
-            return
-        }
+//        if (!enableKeys[sender.tag]!){
+//            return
+//        }
         
         while(musicBox.audioPlayers[sender.tag-10000].volume>0){
             musicBox.audioPlayers[sender.tag-10000].volume = musicBox.audioPlayers[sender.tag-10000].volume - 0.05
@@ -232,7 +233,10 @@ class ViewController: UIViewController{
             self.resultLabel.layer.opacity = 1
             self.resultLabel.layer.opacity = 0
         }) { (Bool) in
-            self.timerView.replay(gg: gameOver)
+            if (!stopped) {
+                self.timerView.replay(gg: gameOver)
+            }
+
         }
         if(gameOver){
             gameover()
@@ -308,8 +312,10 @@ extension ViewController:PauseViewDelegate{
         if gg{
             gameOver = true
             responds()
+            stopped = false
         }else{
-            timerView.timer.resume()
+//            timerView.timer.resume()
+            timerView.replay(gg: false)
         }
     }
 }

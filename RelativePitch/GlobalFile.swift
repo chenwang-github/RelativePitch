@@ -18,6 +18,7 @@ var chance = 5
 var scoreToNextLevel = 2
 var maxLevel = 15
 var gameOver = false
+var stopped = false
 
 
 //Frame
