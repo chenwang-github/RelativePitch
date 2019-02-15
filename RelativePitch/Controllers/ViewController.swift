@@ -235,6 +235,7 @@ class ViewController: UIViewController{
         }) { (Bool) in
             if (!stopped) {
                 self.timerView.replay(gg: gameOver)
+                print("Replay!")
             }
 
         }
@@ -312,11 +313,13 @@ extension ViewController:PauseViewDelegate{
         if gg{
             gameOver = true
             responds()
-            stopped = false
+            
         }else{
 //            timerView.timer.resume()
+        
             timerView.replay(gg: false)
         }
+        stopped = false
     }
 }
 

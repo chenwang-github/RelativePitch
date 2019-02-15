@@ -23,7 +23,6 @@ class PauseViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         if let maxFromData = defualts?.integer(forKey: "best") {
             bestScore = maxFromData
-            currentLevel = 1
         }
     }
     
@@ -79,7 +78,6 @@ class PauseViewController: UIViewController {
     }
     
     @objc private func quitGame(){
-        gameOver = true
         dismiss(animated: true) {
             self.delegate.passValue(gg:true)
         }
