@@ -38,7 +38,7 @@ class TimerView: UIView , AppusCircleTimerDelegate {
     
     func setScoreLabel(){
         scoreLabel = CommonLabel(frame: CGRect(x: 0, y: 0, width: frame.size.width-7, height: frame.size.height-7))
-        scoreLabel.backgroundColor = UIColor(red: 0.92, green: 0.34, blue: 0.34, alpha: 1)
+        //scoreLabel.backgroundColor = UIColor(red: 0.92, green: 0.34, blue: 0.34, alpha: 1)
         scoreLabel.textColor = .white
         scoreLabel.font = UIFont(name: "PingFangSC-Light", size: 38)
         scoreLabel.text = "0"

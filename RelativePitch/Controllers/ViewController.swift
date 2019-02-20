@@ -244,7 +244,7 @@ class ViewController: UIViewController{
         }
         
         if(scoreToNextLevel == 0){
-            scoreToNextLevel = 2
+            scoreToNextLevel = 5
             updateKey()
         }
     }

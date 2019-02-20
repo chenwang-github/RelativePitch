@@ -11,8 +11,8 @@ import UIKit
 class MainViewController: UIViewController {
 
     
+    var scrollView:UIScrollView!
     var start:MenuButtonView!
-
     
     override func viewWillAppear(_ animated: Bool) {
         //trasition
@@ -27,6 +27,20 @@ class MainViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.view.backgroundColor = customRed
         addButtons()
+        //addScrollView()
+    }
+    
+    
+    private func addScrollView(){
+        let imageView=UIImageView(image:UIImage(named:"ss"))
+        let scrollView=UIScrollView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: imageView.frame.size.height))
+        scrollView.backgroundColor = UIColor.white
+        scrollView.contentSize=imageView.bounds.size;
+        scrollView.addSubview(imageView);
+    
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.showsHorizontalScrollIndicator = false
+        self.view.addSubview(scrollView)
     }
     
     private func addButtons(){

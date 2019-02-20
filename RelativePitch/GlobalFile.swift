@@ -15,7 +15,7 @@ var defualts:UserDefaults!
 var score = 0
 var bestScore = 0
 var chance = 5
-var scoreToNextLevel = 1
+var scoreToNextLevel = 5
 var maxLevel = 15
 var gameOver = false
 var stopped = false
@@ -46,7 +46,7 @@ public func reset(){
     gameOver = false
     currentLevel = 1
     enableKeys = levels[currentLevel]!
-    scoreToNextLevel = 2
+    scoreToNextLevel = 5
 }
 
 
