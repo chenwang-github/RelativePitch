@@ -60,7 +60,7 @@ var enableKeys : [Int:Bool] = [:]
 
 
 
-
+//go to a new view
 public func whiteTransition(fromView:UIViewController, toView:UIViewController){
     let whiteScreen = UIView(frame: UIScreen.main.bounds)
     whiteScreen.backgroundColor = UIColor.white
@@ -76,6 +76,8 @@ public func whiteTransition(fromView:UIViewController, toView:UIViewController){
     }
 }
 
+
+//pop a view
 public func whiteTransitionPop(fromView:UIViewController){
     let whiteScreen = UIView(frame: UIScreen.main.bounds)
     whiteScreen.backgroundColor = UIColor.white
@@ -92,7 +94,7 @@ public func whiteTransitionPop(fromView:UIViewController){
 }
 
 
-
+//arrive the new view
 public func appearFromWhite(view:UIViewController){
     let whiteScreen = UIView(frame: UIScreen.main.bounds)
     whiteScreen.backgroundColor = UIColor.white

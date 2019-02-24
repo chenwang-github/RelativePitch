@@ -17,7 +17,7 @@ class PauseViewController: UIViewController {
     var current:CommonLabel!
     var best:CommonLabel!
     var resume:MenuButtonView!
-    var home:MenuButtonView!
+    var quit:MenuButtonView!
     var delegate:PauseViewDelegate!
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,7 +50,7 @@ class PauseViewController: UIViewController {
         self.view.addSubview(best)
     }
     
-    //add resume or home button here
+    //add resume or quit button here
     private func addButtons(){
         resume = MenuButtonView(frame: CGRect(x: screenWidth/2-(MenuButtonWidth/2), y: screenHeight/2+100, width: MenuButtonWidth, height: MenuButtonHeight))
         resume.button.backgroundColor = customRed
@@ -60,14 +60,14 @@ class PauseViewController: UIViewController {
         resume.shadow.setRoundedCorners(ratio: 0.1)
         self.view.addSubview(resume)
         
-        home = MenuButtonView(frame: CGRect(x: screenWidth/2-(MenuButtonWidth/2), y: screenHeight/2+100+MenuButtonHeight, width: MenuButtonWidth, height: MenuButtonHeight))
-        home.label.text = "Home"
-        home.button.backgroundColor = customRed
-        home.label.textColor = UIColor.white
-        home.button.addTarget(self, action: #selector(quitGame), for: .touchUpInside)
-        home.button.setRoundedCorners(ratio: 0.1)
-        home.shadow.setRoundedCorners(ratio: 0.1)
-        self.view.addSubview(home)
+        quit = MenuButtonView(frame: CGRect(x: screenWidth/2-(MenuButtonWidth/2), y: screenHeight/2+100+MenuButtonHeight, width: MenuButtonWidth, height: MenuButtonHeight))
+        quit.label.text = "Quit"
+        quit.button.backgroundColor = customRed
+        quit.label.textColor = UIColor.white
+        quit.button.addTarget(self, action: #selector(quitGame), for: .touchUpInside)
+        quit.button.setRoundedCorners(ratio: 0.1)
+        quit.shadow.setRoundedCorners(ratio: 0.1)
+        self.view.addSubview(quit)
     }
 
     

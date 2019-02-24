@@ -221,9 +221,10 @@ class ViewController: UIViewController{
             whiteScreen.layer.opacity = 1
             
         }) { (bool) in
-            self.present(GameOverViewController(), animated: false) {
-                whiteTransitionPop(fromView: self)
-            }
+            self.navigationController?.pushViewController(GameOverViewController(), animated: false)
+//            self.present(GameOverViewController(), animated: false) {
+//                whiteTransitionPop(fromView: self)
+//            }
             whiteScreen.removeFromSuperview()
         }
     }

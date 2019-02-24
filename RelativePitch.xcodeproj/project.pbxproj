@@ -32,6 +32,7 @@
 		66A51537220EB41000831DD7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A51536220EB41000831DD7 /* MainViewController.swift */; };
 		66A51539220EBBC900831DD7 /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A51538220EBBC900831DD7 /* GameOverViewController.swift */; };
 		66A5153B220EC13A00831DD7 /* GlobalFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A5153A220EC13A00831DD7 /* GlobalFile.swift */; };
+		66D044F5221D00030077B239 /* Notes.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 66D044F4221D00030077B239 /* Notes.rtf */; };
 		66E3D90721F56F1C00DF342B /* MenuButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E3D90621F56F1C00DF342B /* MenuButtonView.swift */; };
 		66E3D90921F5963000DF342B /* KeyButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E3D90821F5963000DF342B /* KeyButtonView.swift */; };
 		66E3D90F21F691F000DF342B /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E3D90E21F691F000DF342B /* TimerView.swift */; };
@@ -65,6 +66,7 @@
 		66A51536220EB41000831DD7 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		66A51538220EBBC900831DD7 /* GameOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
 		66A5153A220EC13A00831DD7 /* GlobalFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalFile.swift; sourceTree = "<group>"; };
+		66D044F4221D00030077B239 /* Notes.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Notes.rtf; sourceTree = "<group>"; };
 		66E3D90621F56F1C00DF342B /* MenuButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButtonView.swift; sourceTree = "<group>"; };
 		66E3D90821F5963000DF342B /* KeyButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyButtonView.swift; sourceTree = "<group>"; };
 		66E3D90E21F691F000DF342B /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 		662EADE921EE97D800C037A7 = {
 			isa = PBXGroup;
 			children = (
+				66D044F4221D00030077B239 /* Notes.rtf */,
 				662EADF421EE97D800C037A7 /* RelativePitch */,
 				653D1A3C67A9D718B6B71E77 /* Pods */,
 				0238D353AFCF249A74948000 /* Frameworks */,
@@ -293,6 +296,7 @@
 				662EAE2F21EEA2D200C037A7 /* Piano-G3.wav in Resources */,
 				662EAE3021EEA2D200C037A7 /* Piano-Ab3.wav in Resources */,
 				662EADFD21EE97D900C037A7 /* Assets.xcassets in Resources */,
+				66D044F5221D00030077B239 /* Notes.rtf in Resources */,
 				662EAE3521EEA2D200C037A7 /* Piano-D3.wav in Resources */,
 				662EAE2121EE9FC100C037A7 /* Piano-C3.wav in Resources */,
 				662EADFB21EE97D800C037A7 /* Main.storyboard in Resources */,
