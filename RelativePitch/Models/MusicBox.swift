@@ -51,6 +51,7 @@ class MusicBox{
     
     public func playSound(index:Int){
         audioPlayers[index].volume = 1
+        audioPlayers[index].stop()
         audioPlayers[index].currentTime = 0
         audioPlayers[index].play()
         

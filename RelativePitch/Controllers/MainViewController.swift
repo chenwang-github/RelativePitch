@@ -58,7 +58,9 @@ class MainViewController: UIViewController {
     @objc func buttonLifted(sender:UIButton){
         switch sender.tag{
         case startTag:
-            whiteTransition(fromView: self, toView: ViewController())
+            currentLevel = 15
+            enableKeys = levels[currentLevel]!
+            whiteTransition(fromView: self, toView: PlaySongController())
         
             
         default:
@@ -72,6 +74,10 @@ class MainViewController: UIViewController {
     
     @objc func buttonPressed(sender:UIButton){
     }
+    
+    
+    
+    
     
     /*
     // MARK: - Navigation
