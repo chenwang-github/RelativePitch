@@ -6,12 +6,16 @@
 //  Copyright © 2019 utopia incubator. All rights reserved.
 //
 
+
+
+// Note: this is the landing page for the application 
+
 import UIKit
 
 class MainViewController: UIViewController {
 
     
-    var scrollView:UIScrollView!
+    //var scrollView:UIScrollView!
     var start:MenuButtonView!
     
     override func viewWillAppear(_ animated: Bool) {
@@ -20,7 +24,6 @@ class MainViewController: UIViewController {
             appearFromWhite(view: self)
         }
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,36 +34,40 @@ class MainViewController: UIViewController {
     }
     
     
-    private func addScrollView(){
-        let imageView=UIImageView(image:UIImage(named:"ss"))
-        let scrollView=UIScrollView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: imageView.frame.size.height))
-        scrollView.backgroundColor = UIColor.white
-        scrollView.contentSize=imageView.bounds.size;
-        scrollView.addSubview(imageView);
+//    private func addScrollView(){
+//        let imageView=UIImageView(image:UIImage(named:"ss"))
+//        let scrollView=UIScrollView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: imageView.frame.size.height))
+//        scrollView.backgroundColor = UIColor.white
+//        scrollView.contentSize=imageView.bounds.size;
+//        scrollView.addSubview(imageView);
+//
+//        scrollView.showsVerticalScrollIndicator = false
+//        scrollView.showsHorizontalScrollIndicator = false
+//        self.view.addSubview(scrollView)
+//    }
     
-        scrollView.showsVerticalScrollIndicator = false
-        scrollView.showsHorizontalScrollIndicator = false
-        self.view.addSubview(scrollView)
-    }
     
+    
+    
+    // MARK: add Subviews
     private func addButtons(){
         start = MenuButtonView(frame: CGRect(x: screenWidth/2-100, y: screenHeight/2-100, width: 200, height: 200))
         start.button.tag = startTag
         start.label.text = "START"
         start.button.addTarget(self, action: #selector(buttonLifted(sender:)), for: .touchUpInside)
-        start.button.addTarget(self, action: #selector(buttonPressed(sender:)), for: .touchDown)
         start.button.setRoundedCorners(ratio: 0.1)
         start.shadow.setRoundedCorners(ratio: 0.1)
         self.view.addSubview(start)
     }
     
+    // MARK: add Actions
 
     @objc func buttonLifted(sender:UIButton){
         switch sender.tag{
         case startTag:
             currentLevel = 15
             enableKeys = levels[currentLevel]!
-            whiteTransition(fromView: self, toView: PlaySongController())
+            whiteTransition(fromView: self, toView: ViewController())
         
             
         default:
@@ -68,26 +75,7 @@ class MainViewController: UIViewController {
         }
         
     }
-
-
     
     
-    @objc func buttonPressed(sender:UIButton){
-    }
-    
-    
-    
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 

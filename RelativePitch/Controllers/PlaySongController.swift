@@ -46,8 +46,6 @@ class PlaySongController: UIViewController {
             appearFromWhite(view: self)
         }
     }
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -87,9 +85,7 @@ class PlaySongController: UIViewController {
     
     
     
-    //MARK: - Buttons(Key) Setup
-    
-    
+    //MARK: add Subviews here
     private func createKey(){
         
         //large key
@@ -141,7 +137,7 @@ class PlaySongController: UIViewController {
     
     
     
-    
+    // MARK: add Actions are here
     @objc private func keyReleased(sender:UIButton){
     
         //enableKeys = levels[currentLevel]!
@@ -155,10 +151,6 @@ class PlaySongController: UIViewController {
         
         //print("released")
     }
-    
-    
-    
-    
     @objc private func keyTapped(sender:UIButton){
         if (!enableKeys[sender.tag]!){
             return
@@ -177,6 +169,7 @@ class PlaySongController: UIViewController {
     }
 
 
+    // MARK: Game logic
     private func check()-> Bool {
         for (key,_) in song[pitchInput.count-1]{
 
@@ -188,7 +181,6 @@ class PlaySongController: UIViewController {
         }
         return false
     }
-    
     private func playSong(song:[[Int:Int]]){
         for i in song{
             for (key,value) in i{

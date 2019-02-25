@@ -36,6 +36,8 @@ class TimerView: UIView , AppusCircleTimerDelegate {
         
     }
     
+    
+    //add Subviews here
     func setScoreLabel(){
         scoreLabel = CommonLabel(frame: CGRect(x: 0, y: 0, width: frame.size.width-7, height: frame.size.height-7))
         //scoreLabel.backgroundColor = UIColor(red: 0.92, green: 0.34, blue: 0.34, alpha: 1)
@@ -44,8 +46,6 @@ class TimerView: UIView , AppusCircleTimerDelegate {
         scoreLabel.text = "0"
         self.addSubview(scoreLabel)
     }
-    
-    
     func setTimers(){
         
         timer.delegate = self
@@ -83,21 +83,25 @@ class TimerView: UIView , AppusCircleTimerDelegate {
         startTimer()
         
     }
-    
-    
-    
+
+    // MARK: Override required functions
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+//MARK: public function
+extension TimerView{
     func startTimer(){
         musicBox.PlayRandom()
         timer.start()
     }
-    
     func replay(gg:Bool){
         if !gg {
             answered = true
             circleCounterTimeDidExpire(circleTimer: timer)
         }
     }
-    
     func circleCounterTimeDidExpire(circleTimer: AppusCircleTimer) {
         if !answered{
             delegate.Timeup()
@@ -107,14 +111,7 @@ class TimerView: UIView , AppusCircleTimerDelegate {
             self.startTimer()
             answered = false
         }
-
-    }
-
-
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        
     }
 }
-
 

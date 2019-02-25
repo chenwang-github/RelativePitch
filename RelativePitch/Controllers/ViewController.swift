@@ -45,36 +45,21 @@ class ViewController: UIViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Do any additional setup after loading the view, typically from a nib.
         self.view.backgroundColor = customRed
         
         //display 3/3 - 0/3
-        chanceLabel = CommonLabel(frame:CGRect(x:50,y:50,width:50,height:50))
-        chanceLabel.textColor = UIColor.white
-        chanceLabel.text = "\(chance)/5"
-        self.view.addSubview(chanceLabel)
+        addChanceLabel()
         
         //pasue button
-        pauseButton = MenuButtonView(frame:CGRect(x:screenWidth-100,y:50,width:50,height:50))
-        pauseButton.button.backgroundColor = UIColor.white
-        pauseButton.button.addTarget(self, action: #selector(paused), for: .touchUpInside)
-        pauseButton.label.text = "||"
-        self.view.addSubview(pauseButton)
-        
+        addPauseButton()
         
         //the clock
-        timerView = TimerView(frame: CGRect(x: screenWidth/2-screenWidth/4, y: screenHeight/4, width: screenWidth/2, height: screenWidth/2))
-        timerView.delegate = self
-        self.view.addSubview(timerView)
+        addTimeVIew()
         
         //Wrong/Correct/Gameover
-        resultLabel = CommonLabel(frame: CGRect(x: 0, y: screenHeight/2+screenWidth/8, width: screenWidth, height: 40))
-        resultLabel.layer.opacity = 0
-        resultLabel.text = "Wrong"
-        resultLabel.textColor = UIColor.white
-        self.view.addSubview(resultLabel)
-        
+        addResultLabel()
+
         //create all the note keys
         createKey()
         
@@ -84,7 +69,35 @@ class ViewController: UIViewController{
     }
     
     
-    func popKey(){
+    // MARK: add Subviews
+    private func addChanceLabel(){
+        chanceLabel = CommonLabel(frame:CGRect(x:50,y:50,width:50,height:50))
+        chanceLabel.textColor = UIColor.white
+        chanceLabel.text = "\(chance)/5"
+        self.view.addSubview(chanceLabel)
+    }
+    private func addPauseButton(){
+        pauseButton = MenuButtonView(frame:CGRect(x:screenWidth-100,y:50,width:50,height:50))
+        pauseButton.button.backgroundColor = UIColor.white
+        pauseButton.button.addTarget(self, action: #selector(paused), for: .touchUpInside)
+        pauseButton.label.text = "||"
+        self.view.addSubview(pauseButton)
+    }
+    private func addTimeVIew(){
+        timerView = TimerView(frame: CGRect(x: screenWidth/2-screenWidth/4, y: screenHeight/4, width: screenWidth/2, height: screenWidth/2))
+        timerView.delegate = self
+        self.view.addSubview(timerView)
+    }
+    private func addResultLabel(){
+        resultLabel = CommonLabel(frame: CGRect(x: 0, y: screenHeight/2+screenWidth/8, width: screenWidth, height: 40))
+        resultLabel.layer.opacity = 0
+        resultLabel.text = "Wrong"
+        resultLabel.textColor = UIColor.white
+        self.view.addSubview(resultLabel)
+    }
+    
+    // MARK: Key related functions
+    private func popKey(){
         var i = 0
         while( i < buttons.count){
             UIView.animate(withDuration: 0.5+(0.2*Double(i))) {
@@ -101,15 +114,7 @@ class ViewController: UIViewController{
             j+=1
         }
     }
-   
-    
-    
-    
-    //MARK: - Buttons(Key) Setup
-
-    
     private func createKey(){
-        
         //large key
         for i in 1...7{
             let keyView = KeyButtonView(frame: CGRect(x: Double(i-1)*Double(keyWidth), y: Double(UIScreen.main.bounds.height), width: Double(keyWidth), height: 230.0))
@@ -157,7 +162,6 @@ class ViewController: UIViewController{
         }
         
     }
-    
     private func updateKey(){
         UIView.animate(withDuration: 1.5) {
             var i = 0
@@ -174,21 +178,39 @@ class ViewController: UIViewController{
         print("updated")
     }
 
-    @objc private func paused(){
-        stopped = true
-        timerView.timer.stop()
-        let vc = PauseViewController()
-        vc.delegate = self
-        present(vc, animated: true)
+    // MARK: Actions
+    @objc private func keyTapped(sender:UIButton){
+        //don't responds when the key is disabled
+        if (!enableKeys[sender.tag]!){
+            return
+        }
+        //stop the timer first
+        self.timerView.timer.stop()
+        //then play the music
+        musicBox.playSound(index: sender.tag-10000)
+        
+        
+        //check if answered
+        if(!timerView.answered){
+            timerView.answered = true
+            
+            //check the correctness
+            if musicBox.lastNote == musicBox.noteList[sender.tag-10000]{
+                ifCorrect()
+            }else{
+                ifWrong()
+            }
+            if(currentLevelScore == 0){
+                levelUp()
+            }
+        }
     }
-    
-    
     @objc private func keyReleased(sender:UIButton){
         //print("lifted")
         enableKeys = levels[currentLevel]!
-//        if (!enableKeys[sender.tag]!){
-//            return
-//        }
+        //        if (!enableKeys[sender.tag]!){
+        //            return
+        //        }
         
         while(musicBox.audioPlayers[sender.tag-10000].volume>0){
             musicBox.audioPlayers[sender.tag-10000].volume = musicBox.audioPlayers[sender.tag-10000].volume - 0.05
@@ -199,11 +221,16 @@ class ViewController: UIViewController{
         responds()
         print("released")
     }
+    @objc private func paused(){
+        stopped = true
+        timerView.timer.stop()
+        let vc = PauseViewController()
+        vc.delegate = self
+        present(vc, animated: true)
+    }
     
-    
+    // MARK: game logic
     public func gameover(){
-        print("game over")
-        
         if score > bestScore{
             bestScore = score
             defualts.set(bestScore, forKey: "best")
@@ -228,15 +255,15 @@ class ViewController: UIViewController{
             whiteScreen.removeFromSuperview()
         }
     }
-    
     public func responds(){
+        //show Correct/Wrong/Miss Message
         UIView.animate(withDuration: 2, animations: {
             self.resultLabel.layer.opacity = 1
             self.resultLabel.layer.opacity = 0
         }) { (Bool) in
+            //if pause before above animate finished
             if (!stopped) {
                 self.timerView.replay(gg: gameOver)
-                print("Replay!")
             }
 
         }
@@ -244,59 +271,40 @@ class ViewController: UIViewController{
             gameover()
         }
         
-        if(scoreToNextLevel == 0){
-            scoreToNextLevel = 5
+        if(currentLevelScore == 0){
+            currentLevelScore = scoreToNextLevel
             updateKey()
         }
     }
-
-    @objc private func keyTapped(sender:UIButton){
-        if (!enableKeys[sender.tag]!){
-            return
-        }
-        self.timerView.timer.stop()
-        musicBox.playSound(index: sender.tag-10000)
-        musicBox.audioPlayers[sender.tag-10000].volume = 1
-        
-        if(!timerView.answered){
-            timerView.answered = true
-            //correct
-            if musicBox.lastNote == musicBox.noteList[sender.tag-10000]{
-                score += 1
-                scoreToNextLevel-=1
-                timerView.scoreLabel.text = String(score)
-                resultLabel.text = "Correct"
-                print(scoreToNextLevel)
-                //wrong
-            }else{
-                resultLabel.text = "Wrong"
-                chance -= 1
-                chanceLabel.text = "\(chance)/5"
-                if(chance == 0){
-                    resultLabel.text = "Game Over"
-                    gameOver = true
-                }
-            }
-            if(scoreToNextLevel == 0){
-                if currentLevel != maxLevel{
-                    currentLevel+=1
-                    resultLabel.text = "Level \(currentLevel)"
-                }
-                
-            }
-        }
-        
-        
-        musicBox.audioPlayers[sender.tag-10000].volume = 1
-        
-        
-        print("pressed")
+    private func ifCorrect(){
+        score += 1
+        currentLevelScore-=1
+        timerView.scoreLabel.text = String(score)
+        resultLabel.text = "Correct"
     }
+    private func ifWrong(){
+        resultLabel.text = "Wrong"
+        chance -= 1
+        chanceLabel.text = "\(chance)/5"
+        if(chance == 0){
+            resultLabel.text = "Game Over"
+            gameOver = true
+        }
+    }
+    private func levelUp(){
+        if currentLevel != maxLevel{
+            currentLevel+=1
+            resultLabel.text = "Level \(currentLevel)"
+        }
+    }
+    private func checkAnswer(){
+    //func Timeup() is defined in extention below
     
+    }
 }
 
 extension ViewController: TimerViewDelegate{
-    func Timeup() {
+    func Timeup(){
         chance -= 1
         chanceLabel.text = "\(chance)/5"
         resultLabel.text = "Miss"
@@ -304,20 +312,20 @@ extension ViewController: TimerViewDelegate{
             resultLabel.text = "Game Over"
             gameOver = true
         }
+        //add responds here because keyRelease won't trigger
         responds()
     }
 }
 
 extension ViewController:PauseViewDelegate{
-    
     func passValue(gg:Bool) {
-        if gg{
+        //if quit
+        if gameOver{
             gameOver = true
             responds()
             
+        //if resume
         }else{
-//            timerView.timer.resume()
-        
             timerView.replay(gg: false)
         }
         stopped = false

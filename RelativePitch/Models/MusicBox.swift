@@ -6,6 +6,11 @@
 //  Copyright © 2019 utopia incubator. All rights reserved.
 //
 
+
+
+
+// Note : This class deals with playing audios
+
 import Foundation
 import AVFoundation
 
@@ -23,16 +28,13 @@ class MusicBox{
     //noteList stores all the audioPlayers
     var audioPlayers = Array<AVAudioPlayer>()
     
-    
+    //create singleton
     init(){
         createAudioPlayers()
     }
     
 
-    
-    
     //Mark: - AVAudioPlayer Setup
-    
     private func createAudioPlayers(){
         var count = 0
         var audioPlayer = AVAudioPlayer()
@@ -49,6 +51,13 @@ class MusicBox{
         }
     }
     
+
+
+}
+
+// MARK: Public Actions for MusicBox
+extension MusicBox{
+    
     public func playSound(index:Int){
         audioPlayers[index].volume = 1
         audioPlayers[index].stop()
@@ -56,8 +65,6 @@ class MusicBox{
         audioPlayers[index].play()
         
     }
-    
-    
     public func PlayRandom(){
         
         let index = Int.random(in: 0 ..< noteList.count)
@@ -71,9 +78,4 @@ class MusicBox{
         }
     }
 
-//    public func backgroundPlay(gap:UInt32){
-//        sleep(gap)
-//        PlayRandom()
-//        print(lastNote!)
-//    }
 }

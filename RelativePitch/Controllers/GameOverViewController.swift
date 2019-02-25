@@ -23,7 +23,6 @@ class GameOverViewController: UIViewController {
             currentLevel = 1
         }
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         appearFromWhite(view: self)
@@ -62,7 +61,6 @@ class GameOverViewController: UIViewController {
         ggLabel.text = "Game Over"
         self.view.addSubview(ggLabel);
     }
-    
     private func addReplayButton(){
         replayButton = MenuButtonView(frame: CGRect(x: screenWidth/2-(MenuButtonWidth/2), y: screenHeight/2+100, width: MenuButtonWidth, height: MenuButtonHeight))
         replayButton.button.backgroundColor = customRed
@@ -73,7 +71,6 @@ class GameOverViewController: UIViewController {
         replayButton.shadow.setRoundedCorners(ratio: 0.1)
         self.view.addSubview(replayButton)
     }
-    
     private func addHomeButton(){
         homeButton = MenuButtonView(frame: CGRect(x: screenWidth/2-(MenuButtonWidth/2), y: screenHeight/2+100+MenuButtonHeight, width: MenuButtonWidth, height: MenuButtonHeight))
         homeButton.label.text = "Home"
@@ -96,7 +93,6 @@ class GameOverViewController: UIViewController {
         reset()
         self.navigationController?.pushViewController(ViewController(), animated: false)
     }
-    
     @objc private func homeButtonClicked(){
         reset()
 
@@ -108,17 +104,4 @@ class GameOverViewController: UIViewController {
         }
     }
     
-
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

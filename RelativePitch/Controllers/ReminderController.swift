@@ -30,16 +30,13 @@ class ReminderController: UIViewController {
     }
     
 
-    // Mark: add Subviews here
-    
-    
+    // MARK: add Subviews here
     private func addReminderView(){
         reminderView = UIView(frame: CGRect(x: 0, y: screenHeight/2-80, width: screenWidth, height: 160))
         reminderView.backgroundColor = customRed
         addRuleLabel()
         addDescriptionLabel()
     }
-    
     private func addRuleLabel(){
         ruleLabel = CommonLabel(frame: CGRect(x: 0, y: 30, width: screenWidth, height: 50))
         ruleLabel.textColor = UIColor.white
@@ -59,18 +56,8 @@ class ReminderController: UIViewController {
         reminderView.addSubview(descriptionLabel)
     }
     
-    
+    // MARK: add Actions here
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         whiteTransition(fromView: self, toView: PlaySongController())
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

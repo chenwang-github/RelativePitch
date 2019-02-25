@@ -25,7 +25,6 @@ class PauseViewController: UIViewController {
             bestScore = maxFromData
         }
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,7 +35,7 @@ class PauseViewController: UIViewController {
         
     }
     
-    //add current and best here
+    // MARK: add Subviews here
     private func addLabels(){
         current = CommonLabel(frame: CGRect(x: 0, y: screenHeight/2-150, width: screenWidth, height: 150))
         current.textColor = customRed
@@ -49,8 +48,6 @@ class PauseViewController: UIViewController {
         best.text = "Best Score : \(bestScore)"
         self.view.addSubview(best)
     }
-    
-    //add resume or quit button here
     private func addButtons(){
         resume = MenuButtonView(frame: CGRect(x: screenWidth/2-(MenuButtonWidth/2), y: screenHeight/2+100, width: MenuButtonWidth, height: MenuButtonHeight))
         resume.button.backgroundColor = customRed
@@ -70,13 +67,12 @@ class PauseViewController: UIViewController {
         self.view.addSubview(quit)
     }
 
-    
+    // MARK: add Actions here
     @objc private func resumeGame(){
         dismiss(animated: true) {
             self.delegate.passValue(gg:false)
         }
     }
-    
     @objc private func quitGame(){
         dismiss(animated: true) {
             self.delegate.passValue(gg:true)
@@ -84,17 +80,7 @@ class PauseViewController: UIViewController {
     }
     
    
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 }
+
 
 

@@ -24,16 +24,16 @@ class KeyButtonView: UIView {
         myFrame = frame
     }
     
+    
+    // MARK: add Subviews here
     func createSmallKey(){
         setButton(frame:myFrame, isSmallKey:true)
         setLabel(frame:myFrame, isSmallKey:true)
     }
-    
     func createLargeKey(){
         setButton(frame:myFrame, isSmallKey:false)
         setLabel(frame:myFrame, isSmallKey:false)
     }
-    
     func setButton(frame:CGRect, isSmallKey:Bool){
         
         //Common Part
@@ -64,7 +64,6 @@ class KeyButtonView: UIView {
         self.addSubview(button)
         self.addSubview(frontShadow)
     }
-    
     func setLabel(frame:CGRect, isSmallKey:Bool){
         //setup Label
         if isSmallKey{
@@ -81,7 +80,7 @@ class KeyButtonView: UIView {
         }
     }
     
-    
+    // MARK: add Actions here
     @objc func buttonPressed(sender:UIButton){
         
 //        musicBox.playSound(index: sender.tag-10000)
@@ -109,7 +108,6 @@ class KeyButtonView: UIView {
             
         }
     }
-    
     @objc func buttonLifted(sender :UIButton){
         //print("lifted")
 //        while(musicBox.audioPlayers[sender.tag-10000].volume>0){
@@ -132,6 +130,7 @@ class KeyButtonView: UIView {
         }
     }
     
+    // MARK: Override required functions
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
