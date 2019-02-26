@@ -17,10 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         
-        let root = MainViewController()
-        let nvc = UINavigationController(rootViewController: root)
-        nvc.navigationBar.isHidden = true
-        self.window?.rootViewController = nvc
+//        let root = TabbarController()
+        let root = SongListController()
+        self.window?.rootViewController = root
         
         
     

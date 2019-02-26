@@ -20,6 +20,7 @@ class MainViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         //trasition
+        self.tabBarController?.tabBar.isHidden = false
         UIView.animate(withDuration: 0.5) {
             appearFromWhite(view: self)
         }

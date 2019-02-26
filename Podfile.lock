@@ -1,0 +1,20 @@
+PODS:
+  - CircleTimer (0.2.2)
+  - SnapKit (4.0.0)
+
+DEPENDENCIES:
+  - CircleTimer
+  - SnapKit (~> 4.0.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - CircleTimer
+    - SnapKit
+
+SPEC CHECKSUMS:
+  CircleTimer: 623db0cf5762db38ac3c940677377df0b94af674
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+
+PODFILE CHECKSUM: 07d09bdd957c2a18bc402117daca9fc00e1b01f5
+
+COCOAPODS: 1.5.3

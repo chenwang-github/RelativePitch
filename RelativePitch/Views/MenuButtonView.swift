@@ -70,6 +70,7 @@ class MenuButtonView: UIView {
     }
     
     
+    
     // MARK: Override required function
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

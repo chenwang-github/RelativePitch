@@ -35,6 +35,9 @@
 		66D044F5221D00030077B239 /* Notes.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 66D044F4221D00030077B239 /* Notes.rtf */; };
 		66D044F722222A820077B239 /* ReminderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D044F622222A820077B239 /* ReminderController.swift */; };
 		66D044F9222288460077B239 /* PlaySongController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D044F8222288460077B239 /* PlaySongController.swift */; };
+		66D044FB2224CF6D0077B239 /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D044FA2224CF6D0077B239 /* TabbarController.swift */; };
+		66D044FD2224D01C0077B239 /* SongListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D044FC2224D01C0077B239 /* SongListController.swift */; };
+		66D044FF2225D2D10077B239 /* SongCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D044FE2225D2D10077B239 /* SongCell.swift */; };
 		66E3D90721F56F1C00DF342B /* MenuButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E3D90621F56F1C00DF342B /* MenuButtonView.swift */; };
 		66E3D90921F5963000DF342B /* KeyButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E3D90821F5963000DF342B /* KeyButtonView.swift */; };
 		66E3D90F21F691F000DF342B /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E3D90E21F691F000DF342B /* TimerView.swift */; };
@@ -71,6 +74,9 @@
 		66D044F4221D00030077B239 /* Notes.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Notes.rtf; sourceTree = "<group>"; };
 		66D044F622222A820077B239 /* ReminderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderController.swift; sourceTree = "<group>"; };
 		66D044F8222288460077B239 /* PlaySongController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaySongController.swift; sourceTree = "<group>"; };
+		66D044FA2224CF6D0077B239 /* TabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
+		66D044FC2224D01C0077B239 /* SongListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListController.swift; sourceTree = "<group>"; };
+		66D044FE2225D2D10077B239 /* SongCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongCell.swift; sourceTree = "<group>"; };
 		66E3D90621F56F1C00DF342B /* MenuButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButtonView.swift; sourceTree = "<group>"; };
 		66E3D90821F5963000DF342B /* KeyButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyButtonView.swift; sourceTree = "<group>"; };
 		66E3D90E21F691F000DF342B /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
@@ -168,6 +174,7 @@
 		66E3D90A21F5964E00DF342B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				66D044FE2225D2D10077B239 /* SongCell.swift */,
 				66E3D90621F56F1C00DF342B /* MenuButtonView.swift */,
 				66E3D90821F5963000DF342B /* KeyButtonView.swift */,
 				66E3D90E21F691F000DF342B /* TimerView.swift */,
@@ -207,6 +214,8 @@
 				664DCDAE221613E0004C6ACC /* PauseViewController.swift */,
 				66D044F622222A820077B239 /* ReminderController.swift */,
 				66D044F8222288460077B239 /* PlaySongController.swift */,
+				66D044FA2224CF6D0077B239 /* TabbarController.swift */,
+				66D044FC2224D01C0077B239 /* SongListController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -359,6 +368,7 @@
 			files = (
 				66E3D90F21F691F000DF342B /* TimerView.swift in Sources */,
 				66D044F722222A820077B239 /* ReminderController.swift in Sources */,
+				66D044FB2224CF6D0077B239 /* TabbarController.swift in Sources */,
 				662EADF821EE97D800C037A7 /* ViewController.swift in Sources */,
 				664DCDAD2213B411004C6ACC /* Levels.swift in Sources */,
 				66E3D90921F5963000DF342B /* KeyButtonView.swift in Sources */,
@@ -366,6 +376,8 @@
 				664DCDAF221613E0004C6ACC /* PauseViewController.swift in Sources */,
 				66E3D90721F56F1C00DF342B /* MenuButtonView.swift in Sources */,
 				66D044F9222288460077B239 /* PlaySongController.swift in Sources */,
+				66D044FF2225D2D10077B239 /* SongCell.swift in Sources */,
+				66D044FD2224D01C0077B239 /* SongListController.swift in Sources */,
 				66A5153B220EC13A00831DD7 /* GlobalFile.swift in Sources */,
 				66E3D91121F6967C00DF342B /* CommonLabel.swift in Sources */,
 				66A51537220EB41000831DD7 /* MainViewController.swift in Sources */,

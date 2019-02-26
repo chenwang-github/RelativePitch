@@ -37,6 +37,7 @@ class ViewController: UIViewController{
     var pauseButton: MenuButtonView!
     
     override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = true
         UIView.animate(withDuration: 0.5) {
             appearFromWhite(view: self)
         }
@@ -231,6 +232,7 @@ class ViewController: UIViewController{
     
     // MARK: game logic
     public func gameover(){
+        print("gameover")
         if score > bestScore{
             bestScore = score
             defualts.set(bestScore, forKey: "best")
@@ -256,6 +258,7 @@ class ViewController: UIViewController{
         }
     }
     public func responds(){
+        print("responds")
         //show Correct/Wrong/Miss Message
         UIView.animate(withDuration: 2, animations: {
             self.resultLabel.layer.opacity = 1
@@ -264,6 +267,7 @@ class ViewController: UIViewController{
             //if pause before above animate finished
             if (!stopped) {
                 self.timerView.replay(gg: gameOver)
+
             }
 
         }
@@ -320,7 +324,8 @@ extension ViewController: TimerViewDelegate{
 extension ViewController:PauseViewDelegate{
     func passValue(gg:Bool) {
         //if quit
-        if gameOver{
+        print("passValue")
+        if gg{
             gameOver = true
             responds()
             
