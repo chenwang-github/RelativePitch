@@ -66,9 +66,9 @@ class MainViewController: UIViewController {
     @objc func buttonLifted(sender:UIButton){
         switch sender.tag{
         case startTag:
-            currentLevel = 15
-            enableKeys = levels[currentLevel]!
-            whiteTransition(fromView: self, toView: ViewController())
+            let dest = ViewController()
+            dest.prepareController(level: 1)
+            whiteTransition(fromView: self, toView: dest)
         
             
         default:

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		54138ECB3858C8A88C09B715 /* Pods_RelativePitch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A188DFC5BFA591B7BD6E4076 /* Pods_RelativePitch.framework */; };
 		5A63DBDA6124759CD9D9D6CD /* Pods_RelativePitch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E682D6571959BE94A1353198 /* Pods_RelativePitch.framework */; };
+		6628A25622261E570099ACE4 /* SongList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6628A25522261E570099ACE4 /* SongList.swift */; };
+		6628A258222635F70099ACE4 /* ShadowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6628A257222635F70099ACE4 /* ShadowButton.swift */; };
 		662EADF621EE97D800C037A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662EADF521EE97D800C037A7 /* AppDelegate.swift */; };
 		662EADF821EE97D800C037A7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662EADF721EE97D800C037A7 /* ViewController.swift */; };
 		662EADFB21EE97D800C037A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 662EADF921EE97D800C037A7 /* Main.storyboard */; };
@@ -46,6 +48,8 @@
 
 /* Begin PBXFileReference section */
 		173439B1D65DFFC2E77C6E78 /* Pods-RelativePitch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RelativePitch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RelativePitch/Pods-RelativePitch.debug.xcconfig"; sourceTree = "<group>"; };
+		6628A25522261E570099ACE4 /* SongList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongList.swift; sourceTree = "<group>"; };
+		6628A257222635F70099ACE4 /* ShadowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowButton.swift; sourceTree = "<group>"; };
 		662EADF221EE97D800C037A7 /* RelativePitch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RelativePitch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		662EADF521EE97D800C037A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		662EADF721EE97D800C037A7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -140,6 +144,7 @@
 		662EADF421EE97D800C037A7 /* RelativePitch */ = {
 			isa = PBXGroup;
 			children = (
+				6628A25522261E570099ACE4 /* SongList.swift */,
 				664DCDAC2213B411004C6ACC /* Levels.swift */,
 				66A5153A220EC13A00831DD7 /* GlobalFile.swift */,
 				662EAE0121EE97D900C037A7 /* Info.plist */,
@@ -179,6 +184,7 @@
 				66E3D90821F5963000DF342B /* KeyButtonView.swift */,
 				66E3D90E21F691F000DF342B /* TimerView.swift */,
 				66E3D91021F6967C00DF342B /* CommonLabel.swift */,
+				6628A257222635F70099ACE4 /* ShadowButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -371,8 +377,10 @@
 				66D044FB2224CF6D0077B239 /* TabbarController.swift in Sources */,
 				662EADF821EE97D800C037A7 /* ViewController.swift in Sources */,
 				664DCDAD2213B411004C6ACC /* Levels.swift in Sources */,
+				6628A258222635F70099ACE4 /* ShadowButton.swift in Sources */,
 				66E3D90921F5963000DF342B /* KeyButtonView.swift in Sources */,
 				66A51539220EBBC900831DD7 /* GameOverViewController.swift in Sources */,
+				6628A25622261E570099ACE4 /* SongList.swift in Sources */,
 				664DCDAF221613E0004C6ACC /* PauseViewController.swift in Sources */,
 				66E3D90721F56F1C00DF342B /* MenuButtonView.swift in Sources */,
 				66D044F9222288460077B239 /* PlaySongController.swift in Sources */,

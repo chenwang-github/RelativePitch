@@ -305,6 +305,10 @@ class ViewController: UIViewController{
     //func Timeup() is defined in extention below
     
     }
+    public func prepareController(level:Int){
+        currentLevel = level
+        enableKeys = levels[currentLevel]!
+    }
 }
 
 extension ViewController: TimerViewDelegate{

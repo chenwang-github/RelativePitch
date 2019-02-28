@@ -16,12 +16,12 @@ class SongCell: UITableViewCell {
     var rightImage:UIImageView!
 
 
-    public func customSetUp(name:String){
+    public func customSetUp(name:String,lock:Bool){
         self.backgroundColor = customRed
         self.selectionStyle = .none
         addButton()
-        addImageView()
-        addLeftLabel()
+        addImageView(lock: lock)
+        addLeftLabel(name: name)
         useSnapKit()
     }
     
@@ -43,9 +43,9 @@ class SongCell: UITableViewCell {
         self.addSubview(button)
     }
     
-    private func addLeftLabel(){
+    private func addLeftLabel(name:String){
         leftLabel = CommonLabel()
-        leftLabel.text = "Happy Birthday Song"
+        leftLabel.text = name
         leftLabel.font  = UIFont(name: "PingFangSC-Light", size: 20)
         leftLabel.textAlignment = .left
         self.addSubview(leftLabel)
@@ -53,10 +53,15 @@ class SongCell: UITableViewCell {
     }
     
     
-    private func addImageView(){
+    private func addImageView(lock:Bool){
         rightImage = UIImageView()
         rightImage.backgroundColor = customRed
-        rightImage?.image = UIImage(named: "lock")
+        if lock{
+            rightImage?.image = UIImage(named: "lock")
+        }else{
+            rightImage?.image = UIImage(named: "unlock")
+            rightImage.backgroundColor = UIColor.black
+        }
         self.addSubview(rightImage)
     }
     
