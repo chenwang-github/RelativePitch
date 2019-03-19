@@ -3,9 +3,7 @@
 Relative is an educational game. Players can train their ear and improve their ability to recognize different music pitches. In the beginning, users will need to play the basic mode (level mode) in order to increase familiarity with different pitches  and unlock songs It is fascinating when users discover that they can play songs without any assistance! 
 
 1. The following is the basic game interface, when the player hears a pitch, the player clicks on what he/she believes to be the right pitch. Whe result will be displayed on the center 
-
 2. When the player clicks on a 5 correct pitches before Gameover, new avaiable key unlocked. The more key be unlocked the more difficult it is.
-
 3. When the player clicks on a wrong pitch, he lose a chance (5 chance in total) and the player run out of the chance, the player loses.
 
 <img src="https://github.com/Koco2/RelativePitch/blob/master/rp2.gif" width="30%">.
